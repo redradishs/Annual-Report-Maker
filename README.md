@@ -56,7 +56,9 @@ demopage: https://gcccsarco.online
 
 
 ## In Collaboration with
-
 ICTe Solutions 2024 - Red Sanchez (Full Stack Developer)
+
+## PROJECT
+2024 Application Development 
 
    
