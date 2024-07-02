@@ -1,0 +1,281 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+body {
+  min-height: 100vh;
+  background-color: #eeeeee;
+  transition: all 0.4s ease; /* Add transition for body movement */
+}
+
+.grid {
+  object-position: center;
+  border: none; /* Remove any existing border */
+  height: 500px;
+  text-align: center;
+  display: flex; /* Use flexbox layout */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-left: 60px;
+}
+
+.card img {
+  object-position: center; 
+  width: 50px;
+  height: 250px; 
+  margin-bottom: 8px;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.createf {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  margin-top: 15px;
+  margin-left: 90px;
+  box-sizing: border-box;
+  color: #d99e6d;
+}
+
+.card {
+  border: transparent;
+  background-color: white;
+  width: 220px;
+  margin-right: 50px; /* Adjust the right margin to control spacing */
+}
+
+.card img {
+  width: 100%;
+}
+
+.title {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  top: -20px;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.desc {
+  margin-top: -20px;
+  font-size: 1rem;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 15px 45px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #d99e6d;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: #d0884d;
+  transform: scale(1.05); /* Scale up the button on hover */
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 10px; /* Equivalent to mb-8 */
+  font-size: 1.5rem; /* Equivalent to text-2xl */
+  font-weight: 600; /* Equivalent to font-semibold */
+  line-height: 1; /* Equivalent to leading-none */
+  letter-spacing: -0.025em; /* Equivalent to tracking-tighter */
+}
+
+.full-container {
+  position: relative;
+  width: 100%;
+  max-width: 80rem; /* Equivalent to max-w-7xl */
+  margin-left: auto; /* Equivalent to mx-auto */
+  margin-right: auto; /* Equivalent to mx-auto */
+  padding-left: 1.25rem; /* Equivalent to px-5 */
+  padding-right: 1.25rem; /* Equivalent to px-5 */
+  padding-top: 3rem; /* Equivalent to py-12 */
+  padding-bottom: 3rem; /* Equivalent to py-12 */
+}
+
+.cardy.mt-4 {
+  background-color: #d99e6d;
+}
+
+.title {
+  text-align: center;
+}
+
+.gitna {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* 
+ashered */
+
+.document-selection-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  padding: 20px;
+}
+
+.document-selection-container p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.document-card {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 15vw;
+  height: 40vh;
+}
+
+.document-card img {
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.document-card p {
+  font-size: 14px;
+  color: #333;
+}
+
+.document-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hehe {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+@media (min-width: 1024px) {
+  .full-container {
+    padding-left: 6rem; /* Equivalent to lg:px-24 */
+    padding-right: 6rem; /* Equivalent to lg:px-24 */
+  }
+  
+  .rounded-xl {
+    border-radius: 1.5rem; /* 24px */
+  }
+  
+  .hover\:bg-gray-600:hover {
+    background-color: #d0884d; /* gray */
+  }
+  
+  .focus\:outline-none:focus {
+    outline: none;
+  }
+  
+  .focus\:ring-2:focus {
+    box-shadow: 0 0 0 2px rgba(255, 81, 0, 0.5); /* blue */
+  }
+  
+  .focus\:ring-offset-2:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .relative.items-center.w-full.px-5.py-12.mx-auto.md\:px-12.lg\:px-24.max-w-7xl {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+  
+  .title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .relative.items-center.w-full.px-5.py-12.mx-auto.md\:px-12.lg\:px-24.max-w-7xl {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  
+  .full-container {
+    padding-left: 3rem; /* Equivalent to md:px-12 */
+    padding-right: 3rem; /* Equivalent to md:px-12 */
+  }
+}
+
+.max-w-7xl {
+  max-width: 80rem; /* Adjust as needed */
+}
+
+@media (min-width: 768px) {
+  .picture {
+    height: 12rem; /* Equivalent to lg:h-48 */
+  }
+}
+
+@media (min-width: 640px) {
+  .picture {
+    height: 9rem; /* Equivalent to md:h-36 */
+  }
+}
+
+/* Responsive Spacing for .card elements */
+@media (max-width: 1024px) {
+  .card {
+    margin-right: 20px; /* Reduce right margin on smaller screens */
+    margin-bottom: 20px; /* Add bottom margin for spacing between rows */
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    margin-right: 10px; /* Further reduce right margin on smaller screens */
+    margin-bottom: 10px; /* Add bottom margin for spacing between rows */
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    margin-right: 0; /* Remove right margin on smallest screens */
+    margin-bottom: 20px; /* Add bottom margin for spacing between rows */
+  }
+}
+
+.button-docu-blank {
+  color: gray;
+  border: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  background: transparent;
+  font-size: 34px;
+  outline: none;
+}

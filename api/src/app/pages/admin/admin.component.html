@@ -1,0 +1,14 @@
+ <div id="notification" *ngIf="isNotifOpen">  
+    <div class="notiftit">
+        <button class="ekis-button" (click)="closeNotif()"><i class='fas fa-times'></i></button>
+        <div class="header">Notifications</div>
+    </div>
+    <div class="notifs">
+        <ul>
+            <li>You're all caught up!</li>
+        </ul>
+
+    </div>
+  </div>
+  <button class="bell-button" (click)="openNotif()"><i class="fas fa-bell"></i></button>
+  

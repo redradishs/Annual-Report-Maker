@@ -1,0 +1,85 @@
+body {
+    font-family: 'Georgia', serif;
+    background-color: #fdf6e3;
+    margin: 0;
+    padding: 20px;
+}
+
+.report-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.company-logo {
+    width: 100px;
+    height: auto;
+}
+
+.report-title {
+    font-size: 3em;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+.report-section {
+    margin-bottom: 30px;
+}
+
+.report-section h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.report-section p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.report-section::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    margin-top: 10px;
+}
+
+.report-footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 40px;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.formbold-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+}

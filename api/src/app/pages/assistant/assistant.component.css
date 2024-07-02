@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.open-chatbox-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff9900;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.open-chatbox-btn:hover {
+    background-color: #e68a00;
+}
+
+#chatbox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 400px;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+}
+
+.chatbox-hidden {
+    display: none;
+}
+
+.chatbox-header {
+    background-color: #f5f5f5;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+}
+
+.chatbox-header .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chatbox-body {
+    padding: 10px;
+    background-color: #fff;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.ai-message {
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: RGB(248, 194, 103);
+    color: #fff;
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+
+.chatbox-footer {
+    padding: 10px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ccc;
+}
+
+#user-message {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+    resize: none;
+    overflow: hidden;
+}
+
+#send-message {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#send-message img {
+    width: 20px;
+    height: 20px;
+}
+
+.copy-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.copy-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.message:hover .copy-btn {
+    display: block;
+}

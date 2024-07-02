@@ -1,0 +1,82 @@
+
+   <app-navbar></app-navbar>
+<div class="actions">
+  <div class="titlebox">
+    <input type="text" #titleInput [(ngModel)]="documentTitle" placeholder="Untitled Document" (keydown)="onKeyDown($event)" />
+  </div>
+  
+  
+  <div class="buttons">
+    <button class="button" (click)="printPage()">Print</button>
+    <button class="button" (click)="printPaged()">Download PDF</button>
+    <button class="button" (click)="openModal()">Share</button>
+    <button class="button" (click)="editContent()">Edit</button>
+  </div>
+  <div id="statistics">
+    Words: <span id="wordCount">{{ wordCount }}</span>
+  </div>
+</div>
+
+<div id="printSection" #printSection   style="display: none;">
+  <div *ngFor="let page of [].constructor(totalPages); let i = index">
+    <div [innerHTML]="getPageContent(i)"></div>
+  </div>
+</div>
+
+<div class="content-container" id="content-container">
+    <div class="page" *ngFor="let page of [].constructor(totalPages); let i = index">
+      <div class="page-content" id="content" [innerHTML]="getPageContent(i)"></div>
+    </div>
+  
+    <app-pagination
+      [totalPages]="totalPages"
+      [currentPage]="currentPage"
+      (pageChange)="onPageChange($event)">
+    </app-pagination>
+  </div>
+
+
+<!-- The Modal -->
+<div id="shareModal" class="modal" [ngClass]="{'show': isModalOpen}" style="z-index: 1000;">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Share Report</h2>
+    <div>
+      <label for="shareLink">Shareable Link:</label>
+      <input type="text" id="shareLink" readonly [value]="shareLink" (click)="copyToClipboard()">
+    </div>
+    <div class="pasulong">
+      <div class="pasulong2">
+        <label for="canEdit">Can Edit:</label>
+        <input type="checkbox" id="canEdit" [(ngModel)]="canEdit">
+      </div>
+      <div class="pasulong2">
+        <label for="destroyAfterView">Destroy After View:</label>
+        <input type="checkbox" id="destroyAfterView" [(ngModel)]="destroyAfterView">
+      </div>
+    </div>
+    <div>
+      <label for="viewLimit">View Limit:</label>
+      <input type="number" id="viewLimit" min="1" [(ngModel)]="viewLimit">
+    </div>
+    <div class="dikit">
+      <div *ngIf="canEdit" class="select-to">
+        <label for="selectUsers">Select Users:</label>
+        <select id="selectUsers" multiple [(ngModel)]="selectedUsers" (ngModelChange)="onUserSelect($event)" class="custom-select">
+          <option *ngFor="let user of users" [value]="user.id">{{ user.username }}</option>
+        </select>
+      </div>
+      
+      <div *ngIf="sharedUsers.length > 0" class="shared-to">
+        <label>Shared to:</label>
+        <ul>
+          <li *ngFor="let user of sharedUsers">
+            {{ user.username }}
+            <i class="fa-solid fa-trash" (click)="deleteUserCollab(user.collabId)"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button class="buttong" (click)="generateShareLink()">Generate Link</button>
+  </div>
+</div>

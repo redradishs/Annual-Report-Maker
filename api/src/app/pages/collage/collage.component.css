@@ -1,0 +1,386 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.navDash {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 35px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.navDash h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #d99e6d;
+  font-weight: 600;
+  font-size: 30px;
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px 35px;
+}
+
+.logos img {
+  height: 70px;
+  width: 70px;
+  margin-left: 10px;
+}
+
+#imgg {
+  height: 80px;
+  width: 70px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 80px; /* Adjust to ensure content is not hidden behind nav */
+}
+
+.formats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.format-option-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Adjust the gap as needed */
+}
+
+.format-option {
+  background: none;
+  border: none;
+  padding: 0;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.format-option:hover {
+  background-color: #c88656;
+}
+
+.grid-preview1 {
+  width: 314px; /* Adjust width as needed */
+  height: 314px; /* Adjust height as needed */
+}
+
+.grid-preview2 {
+  width: 300px; /* Adjust width as needed */
+  height: 300px; /* Adjust height as needed */
+}
+
+.grid-preview:hover {
+  cursor: pointer;
+}
+
+#upload-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#upload-section .title {
+  position: absolute;
+  text-align: left;
+  left: 140px;
+  top: 100px;
+  margin-bottom: 40px;
+}
+
+#fileInputLabel {
+  text-decoration: none !important;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  margin-left: 18px;
+  display: inline-block;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  background-color: #d99e6d;
+  color: white;
+  border: solid 1px transparent;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.title h1 {
+  display: flex;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #4F4A45;
+  font-size: 25px;
+  text-align: center;
+  margin: 0;
+}
+
+.title2 h2 {
+  position: absolute;
+  display: flex;
+  text-align: center;
+  font-size: 25px;
+  color: #4F4A45;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  left: 160px;
+  top: 250px;
+}
+
+.image-upload-container {
+  position: absolute;
+  top: 300px;
+  left: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  width: 50%;
+}
+
+.dropzone {
+  width: 100%;
+  height: 150px;
+  border: 2px dashed #d99e6d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d99e6d;
+  font-weight: 600;
+  font-size: 17px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.dropzone.dragover {
+  background-color: #f0e6d6;
+}
+
+.uploaded-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  width: 80%;
+}
+
+.uploaded-images img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 5px;
+  border-radius: 3px;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.uploaded-images img:hover {
+  opacity: 0.7;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.create-btn,
+.cancel-btn,
+.save-btn {
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 20px;
+  margin-top: 100px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.create-btn {
+  position: absolute;
+  margin-right: 660px;
+  background-color: #d99e6d;
+  color: white;
+}
+
+.create-btn:hover {
+  background-color: #c88656;
+  color: #fff;
+}
+
+.cancel-btn {
+  position: absolute;
+  margin-right: 450px;
+  background-color: whitesmoke;
+  color: #4F4A45;
+}
+
+.cancel-btn:hover {
+  background-color: #cbc9c9;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #d99e6d;
+  color: white;
+}
+
+canvas {
+  margin-left: 700px;
+  margin-top: 0px;
+  border: 3px solid #d99e6d;
+  border-radius: 20px;
+}
+
+@media (max-width: 1300px) {
+  .title,
+  .title2 {
+    position: static;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .title2 h2,
+  canvas {
+    margin: 20px auto;
+  }
+
+  canvas {
+    margin-top: 300px;
+  }
+
+  .image-upload-container {
+    position: static;
+    top: 300px;
+    right: auto;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .uploaded-images {
+    justify-content: center;
+    top: 300px;
+    width: 100%;
+  }
+
+  .button-container {
+    position: relative;
+    top: 280px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .create-btn,
+  .cancel-btn {
+    position: static;
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .title h1 {
+    text-align: center;
+    position: static;
+    margin-top: 20px;
+  }
+
+  .title2 h2 {
+    left: 0;
+    top: auto;
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .image-upload-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  #upload-section .title {
+    position: static;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  #fileInputLabel {
+    display: block;
+    margin: 0 auto 20px auto;
+    text-align: center;
+  }
+
+  .button-container,
+  canvas {
+    position: static;
+    margin: 20px 0;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .create-btn,
+  .cancel-btn {
+    margin: 0 10px;
+  }
+  .layouts {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .layout-option {
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .layout-option img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #d99e6d;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+  }
+  
+  .layout-option img:hover {
+    transform: scale(1.1);
+  }
+}

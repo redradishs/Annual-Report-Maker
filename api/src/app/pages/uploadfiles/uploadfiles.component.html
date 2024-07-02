@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+<div class="definedsection">
+  <div class="wrapper">
+    <header>File Uploader</header>
+    <form (click)="triggerFileInput()">
+      <input #fileInput class="file-input" type="file" name="file" hidden (change)="onFileChange($event)" multiple>
+      <i class="fas fa-cloud-upload-alt"></i>
+      <p>Browse File to Upload</p>
+    </form>
+    <section class="progress-area"></section>
+    <section class="uploaded-area"></section>
+    <div class="button-group">
+      <button (click)="skipUpload()">Skip</button>
+      <button (click)="submitFiles($event)">Upload</button>
+    </div>
+  </div>
+</div>

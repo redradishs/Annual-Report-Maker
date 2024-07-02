@@ -1,0 +1,56 @@
+
+<app-navbar></app-navbar>
+
+<h2>Flipbook</h2>
+<div class="controller" *ngIf="paginatedData.length > 0; else noDataTemplate">
+  <button #prevBtn id="prev-btn" (click)="goPrevPage()">
+    <i class="fas fa-arrow-circle-left"></i>
+  </button>
+
+  <div #book id="book" class="book">
+    <div *ngFor="let item of paginatedData; let i = index" [id]="'p' + (i + 1)" class="paper" [ngClass]="{'flipped': currentLocation > i + 1}">
+      <div class="front">
+        <div [id]="'f' + (i + 1)" class="front-content">
+          <div *ngIf="item.front">
+            <h3>{{ item.front.event_name }}</h3>
+            <div class="pcon"><!--Container for the description-->
+            <p><strong>Title:</strong> {{ item.front.event_title }}</p>
+            <p><strong>Date:</strong> {{ item.front.event_date }}</p>
+            <p><strong>Summary:</strong> {{ item.front.summary }}</p>
+          </div>
+          <div class="image">
+            <p><strong>Image:</strong></p>
+            <img [src]="item.front.imageUrl" alt="{{ item.front.event_title }}" width="200"/>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="back">
+        <div [id]="'b' + (i + 1)" class="back-content">
+          <div *ngIf="item.back">
+            <h3>{{ item.back.event_name }}</h3>
+            <div class="pcon">
+            <p><strong>Title:</strong> {{ item.back.event_title }}</p>
+            <p><strong>Date:</strong> {{ item.back.event_date }}</p>
+            <p><strong>Summary:</strong> {{ item.back.summary }}</p>
+            <div class="imageb">
+            <p><strong>Image:</strong></p>
+            <img [src]="item.back.imageUrl" alt="{{ item.back.event_title }}" width="200"/>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button #nextBtn id="next-btn" (click)="goNextPage()">
+    <i class="fas fa-arrow-circle-right"></i>
+  </button>
+</div>
+
+<ng-template #noDataTemplate>
+  <div class="no-data-message">
+    <p>No flipbook data available.</p>
+  </div>
+</ng-template>

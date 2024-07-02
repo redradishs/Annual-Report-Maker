@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.report-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header img {
+    width: 50px;
+    height: 50px;
+}
+.header div {
+    text-align: right;
+}
+.contact-info, .client-info {
+    margin-bottom: 20px;
+}
+.contact-info p, .client-info p {
+    margin: 5px 0;
+}
+.report-details {
+    margin-bottom: 20px;
+}
+.report-details h2 {
+    margin: 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f2a073;
+}
+.total {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+}
+.download-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #e29e6a;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid #e29e6a;
+} 
+.spendings{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

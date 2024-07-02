@@ -1,0 +1,203 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h4 class="titlebox">Financial Report Edit</h4>
+</div>
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <form [formGroup]="financialReportForm" (ngSubmit)="submitAndNavigate(financialreport_id)">
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input
+                        type="text"
+                        name="report_title"
+                        id="report_title"
+                        placeholder="Arco Report"
+                        class="formbold-form-input"
+                        style="width: 100%;"
+                        formControlName="report_title"
+                    />
+                    <label for="report_title" class="formbold-form-label">Report Title</label>
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input
+                        type="date"
+                        name="start_date"
+                        id="start_date"
+                        class="formbold-form-input"
+                        formControlName="start_date"
+                    />
+                    <label for="start_date" class="formbold-form-label">Start Date</label>
+                </div>
+                
+                <div>
+                    <input
+                        type="date"
+                        name="end_date"
+                        id="end_date"
+                        class="formbold-form-input"
+                        formControlName="end_date"
+                    />
+                    <label for="end_date" class="formbold-form-label">End Date</label>
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                   <div>
+                    <input
+                        type="text"
+                        name="prepared_by"
+                        id="prepared_by"
+                        placeholder="Prepared By"
+                        class="formbold-form-input"
+                        formControlName="prepared_by"
+                    />
+                    <label for="prepared_by" class="formbold-form-label">Prepared By</label>
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+              <div>
+                  <input
+                      type="text"
+                      name="income1"
+                      id="income1"
+                      class="formbold-form-input"
+                      placeholder="ex. Employment Income"
+                      formControlName="income1"
+                  />
+                  <label for="income1" class="formbold-form-label">Source of Income</label>
+              </div>
+              
+              <div>
+                  <input
+                      type="number"
+                      name="income_salary1"
+                      id="income_salary1"
+                      class="formbold-form-input"
+                      placeholder="300000"
+                      formControlName="income_salary1"
+                  />
+                  <label for="income_salary1" class="formbold-form-label">Amount</label>
+              </div>
+          </div>
+          <div class="formbold-input-flex">
+            <div>
+                <input
+                    type="text"
+                    name="income2"
+                    id="income2"
+                    class="formbold-form-input"
+                    placeholder="ex. Business"
+                    formControlName="income2"
+                />
+                <label for="income2" class="formbold-form-label"></label>
+            </div>
+            
+            <div>
+                <input
+                    type="number"
+                    name="income_salary2"
+                    id="income_salary2"
+                    class="formbold-form-input"
+                    placeholder="300000"
+                    formControlName="income_salary2"
+                />
+                <label for="income_salary2" class="formbold-form-label"></label>
+            </div>
+        </div>
+
+        <div class="formbold-input-flex">
+          <div>
+              <input
+                  type="text"
+                  name="expense_item1"
+                  id="expense_item1"
+                  class="formbold-form-input"
+                  placeholder="ex. Bills"
+                  formControlName="expense_item1"
+              />
+              <label for="expense_item1" class="formbold-form-label">Expense Item</label>
+          </div>
+          
+          <div>
+              <input
+                  type="number"
+                  name="expense_amount1"
+                  id="expense_amount1"
+                  class="formbold-form-input"
+                  formControlName="expense_amount1"
+              />
+              <label for="expense_amount1" class="formbold-form-label">Amount</label>
+          </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+            <input
+                type="text"
+                name="expense_item2"
+                id="expense_item2"
+                class="formbold-form-input"
+                placeholder="ex. Rent"
+                formControlName="expense_item2"
+            />
+            <label for="expense_item2" class="formbold-form-label"></label>
+        </div>
+        
+        <div>
+            <input
+                type="number"
+                name="expense_amount2"
+                id="expense_amount2"
+                class="formbold-form-input"
+                formControlName="expense_amount2"
+            />
+            <label for="expense_amount2" class="formbold-form-label"></label>
+        </div>
+    </div>
+
+    <div class="formbold-input-flex">
+      <div>
+          <input
+              type="text"
+              name="expense_item3"
+              id="expense_item3"
+              class="formbold-form-input"
+              placeholder="ex. Healthcare"
+              formControlName="expense_item3"
+          />
+          <label for="expense_item3" class="formbold-form-label"></label>
+      </div>
+      
+      <div>
+          <input
+              type="number"
+              name="expense_amount3"
+              id="expense_amount3"
+              class="formbold-form-input"
+              formControlName="expense_amount3"
+          />
+          <label for="expense_amount3" class="formbold-form-label"></label>
+      </div>
+  </div>
+
+            <div class="formbold-textarea">
+                <textarea
+                    rows="6"
+                    name="executive_summary"
+                    id="executive_summary"
+                    placeholder="Summary"
+                    class="formbold-form-input"
+                    formControlName="executive_summary"
+                ></textarea>
+                <label for="executive_summary" class="formbold-form-label">Executive Summary</label>
+            </div>
+
+            <button class="formbold-btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>

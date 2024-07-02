@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<body>
+    <main>
+        <div class="navDash">
+            <h2>Collage</h2>
+        </div>
+        <section id="format-selection">
+            <div class="container">
+                <div class="title">
+                    <h1 *ngIf="!selectedFormat">Select Format:</h1>
+                </div>
+                <div class="formats" *ngIf="!selectedFormat">
+                    <div class="format-option-wrapper">
+                        <button class="format-option" (click)="selectFormat('3x3')">
+                            <img src="assets/3x3.png" alt="3x3 Grid Preview" class="grid-preview1">
+                        </button>
+                        <button class="format-option" (click)="selectFormat('4x4')">
+                            <img src="assets/4x4.png" alt="4x4 Grid Preview" class="grid-preview2">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="upload-section" *ngIf="selectedFormat">
+        <section id="upload-section">
+            <div class="container">
+                <div class="title">
+                    <h1>Documentation / Picture:</h1>
+                    <label for="fileInput" id="fileInputLabel">Upload your picture(s) here.</label>
+                    <input #imageInput type="file" id="fileInput" (change)="onFileSelected(imageInput.files)" multiple style="display: none;">
+                </div>
+                <div class="title2">
+                    <h2>Picture Preview:</h2>
+                </div>
+                <div class="image-upload-container">
+                    <div class="uploaded-images">
+                        <img *ngFor="let imageUrl of imageUrls" [src]="imageUrl" height="100" (click)="removeImage(imageUrl)">
+                    </div>
+                    <div class="dropzone" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
+                        Drop images here
+                    </div>
+                    <div class="button-container">
+                        <button class="create-btn" (click)="createCollage()">Create</button>
+                        <button class="cancel-btn" (click)="cancelCollage()">Cancel</button>
+                    </div>
+                </div>
+                <canvas #collageCanvas></canvas>
+            </div>
+        </section>
+        </section>
+    </main>
+</body>

@@ -1,0 +1,697 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.card {
+  border-radius: 15px;
+}
+
+.text-primary {
+  color:  #d99e6d !important;
+}
+
+.text-primary:hover {
+  color:  #d99e6d !important;
+}
+
+.matuwid {
+  display: flex;
+}
+
+.badge-primary {
+  background-color: #b28b6c !important;
+}
+
+.badge-success {
+  background-color: #d99e6d !important;
+}
+
+.text-orange {
+  color:  #d99e6d !important;
+}
+
+.text-success {
+  color:  #d99e6d !important;
+}
+
+
+.taas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body {
+  min-height: 100vh;
+  transition: all 0.4s ease;
+  background-image: url("/assets/background.png");
+  overflow-x: hidden;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.summary-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.dashboard-container {
+  width: 695px;
+  padding: 20px;
+  border: 5px solid #d99e6d;
+  border-radius: 20px;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: -50px;
+  margin-right: 5px;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+
+.dashboard-container rect {
+  fill: #d99e6d;
+} 
+
+.dashboard-container h1{
+  margin-bottom: 20px;
+  margin-left: 0px;
+  color: #d99e6d;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.project-report {
+  margin-bottom: 20px;
+  color: #d99e6d;
+}
+
+.project-report p {
+  color: #d99e6d;
+}
+
+.project-report h3{
+  color: #d99e6d;
+}
+
+
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+
+
+.progress {
+  height: 20px;
+  background-color: #e5c1a3;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  line-height: 20px; /* Center the text vertically */
+}
+
+
+.datasadashboard {
+  position: absolute;
+  top: 900px;
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  margin-bottom: 50px;
+  margin-left: 60px;
+}
+/**---------------------------------carousel------------------------------**/
+
+#carousel {
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+  margin-left: 80px; /* Adjust as needed */
+  height: 45vh; /* Adjust as needed */
+  width: 90%;
+  overflow: hidden;
+  border-radius: 5px;
+  z-index: 0; /* Ensure it's below navbar */
+}
+
+#carousel iframe {
+  height: 350px;
+  width: 450px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+#carousel div {
+  position: absolute;
+  transition: transform 400ms, left 400ms, opacity 400ms, z-index 0s;
+  opacity: 1;
+  border-radius: 5px;
+  overflow: hidden; /* Ensures no overflow in the div */
+}
+
+#carousel div img {
+  width: 200px;
+  transition: width 400ms;
+  -webkit-user-drag: none;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  border-radius: 10px;
+}
+
+#carousel div.hideLeft {
+  left: 0%;
+  opacity: 0;
+  transform: translateY(50%) translateX(-50%);
+}
+#carousel div.hideLeft img {
+  width: 200px;
+}
+#carousel div.hideRight {
+  left: 100%;
+  opacity: 0;
+  transform: translateY(50%) translateX(-50%);
+}
+#carousel div.hideRight img {
+  width: 200px;
+}
+#carousel div.prev {
+  z-index: 5;
+  left: 30%;
+  transform: translateY(50px) translateX(-50%);
+}
+#carousel img:hover {
+  cursor: default;
+}
+#carousel div.prev img {
+  width: 300px;
+}
+#carousel div.prevLeftSecond {
+  z-index: 4;
+  left: 15%;
+  transform: translateY(50%) translateX(-50%);
+  opacity: 0.7;
+}
+#carousel div.prevLeftSecond img {
+  width: 200px;
+}
+#carousel div.selected {
+  z-index: 10;
+  left: 50%;
+  transform: translateY(0px) translateX(-50%);
+  border-radius: 10px;
+}
+#carousel div.next {
+  z-index: 5;
+  left: 70%;
+  transform: translateY(50px) translateX(-50%);
+}
+#carousel div.next img {
+  width: 300px;
+}
+#carousel div.nextRightSecond {
+  z-index: 4;
+  left: 85%;
+  transform: translateY(50%) translateX(-50%);
+  opacity: 0.7;
+}
+#carousel div.nextRightSecond img {
+  width: 200px;
+}
+
+
+/*previous or next buttons css*/
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 2%;
+  margin-top: 1%;
+}
+
+
+.button-82-pushable {
+  border-radius: 23px;
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  z-index: 999;
+}
+
+.button-82-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(to left, #e5c1a3 0%, #eabe9b 8%, #e9ae7e 92%, #e8a269 100%);
+}
+
+.button-82-front {
+  display: block;
+  position: relative;
+  padding: 8px 23px;
+  border-radius: 23px;
+  font-size: 1.1rem;
+  color: white;
+  background: #eea971;
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+
+.button-82-pushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/*----------------------------------- Main Body Section ----------------------------------------- */
+.main-body {
+  padding-top: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 3.5rem;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.sidebar:hover .main-body {
+  margin-left: 250px;
+}
+
+body:not(.sidebar-hovered) .main-body {
+  margin-left: 75px;
+}
+
+.main-body h2 {
+  margin-bottom: 20px;
+  margin-left: 40px;
+  color: #d99e6d;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.promo_card {
+  background-image: url(/assets/orange.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  border-radius: 10px;
+  height: 220px;
+  padding: 1.5rem;
+  margin-left: 600px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: auto;
+}
+
+.promo_card span {
+  margin-bottom: 10px;
+  align-items: center;
+}
+.promo_card .title {
+  font-size: 35px;
+  justify-content: center;
+}
+.promo_card a {
+  text-decoration: none;
+  color: #d99e6d;
+  background-color: white;
+  display: block;
+  padding: 15px;
+  width: 150px;
+  margin-top: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center; /* Ensure the text is centered */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for smooth animation */
+}
+
+.promo_card a:hover {
+  background-color: #e8a269;
+  color: white; /* Change text color on hover for better contrast */
+}
+
+/*---------------------------- Carousel -------------------------------------*/
+
+@media only screen and (max-width: 1023px) {
+  .slider-wrapper .slide-button {
+    display: none !important;
+  }
+  .slider-wrapper .image-list {
+    gap: 10px;
+    margin-bottom: 15px;
+    scroll-snap-type: x mandatory;
+  }
+  .slider-wrapper .image-list .image-item {
+    width: 280px;
+    height: 380px;
+  }
+  .slider-scrollbar .scrollbar-thumb {
+    width: 20%;
+  }
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .navbar {
+    left: 65%;
+  }
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+@media screen and (max-width:886px) {
+  .promo_card a{
+    padding: 10px;
+    margin-top: 1px;
+  }
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+  
+
+@media screen and (max-width: 800px) {
+  .sidebar {
+    left: 0;
+    z-index: 1000;
+  }
+
+  .sidebar.close {
+    left: -100%;
+  }
+
+  #sidebar-close {
+    display: block;
+  }
+
+  #lock-icon {
+    display: none;
+  }
+
+  .navbar {
+    left: 0;
+    max-width: 100%;
+    transform: translateX(0%);
+  }
+
+  #sidebar-open {
+    display: block;
+  }
+
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .logo a {
+    margin-right: auto;
+  }
+
+  .header-icons .account {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .side_navbar {
+    width: 200px;
+  }
+
+  .main-body {
+    flex: 1;
+    margin-left: 20px;
+    text-align: left;
+  }
+
+  .promo_card {
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+/* Additional Media Queries for Responsiveness */
+
+@media only screen and (max-width: 1201px) {
+  .promo_card {
+    width: 100%;
+    margin-left: 30px;
+  }
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1259px) {
+  .promo_card {
+    width: 98%;
+    margin-left: 30px;
+  }
+
+  .promo_card a {
+    margin-top: 8px;
+  }
+
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .main-body h2 {
+    text-align: left;
+    margin-left: 50px;
+  }
+
+  #carousel {
+ 
+    margin-left: 107px;
+    width: 80%; /* Adjust the width as needed */
+  }
+  
+  .promo_card {
+    margin-left: 50px;
+    height: 180px;
+    width: 95%;
+    text-align: left;
+   
+  }
+  
+  .promo_card .title {
+    font-size: 23px;
+  }
+
+  .promo_card a {
+    display: none;
+  }
+
+  .promo_card span {
+    font-size: 14px; /* Adjust the font size as needed */
+  }
+
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .promo_card {
+    margin-top: -5px;
+    margin-left: 40px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .main-body h2 {
+    text-align: left;
+    margin-left: 50px;
+  }
+
+  .promo_card .title {
+    font-size: 23px;
+    text-align: left;
+  }
+
+  .promo_card span {
+    font-size: 13px; /* Adjust the font size as needed */
+    letter-spacing: -0.5px; /* Adjust the letter-spacing as needed */
+    text-align: left;
+  }
+  #carousel {
+    margin-left: 80px;
+  }
+
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  .button-82-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+    .dashboard-container {
+      display: flex;
+      flex-direction: column;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .promo_card {
+    margin-top: -5px;
+    margin-left: 40px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .promo_card .title {
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .promo_card button {
+    width: 100px;
+    font-size: 12px;
+    z-index: 0;
+  }
+
+  .promo_card span {
+    font-size: 11px; /* Adjust the font size as needed */
+    text-align: left;
+  }
+
+  #carousel {
+    margin-left: 78px;
+  }
+
+  #carousel div img {
+    width: 100px;
+  }
+
+  #carousel div.prev img, #carousel div.next img {
+    width: 250px;
+  }
+  .main-body h2 {
+    text-align: left;
+    margin-left: 50px;
+  }
+
+  .buttons{
+    z-index: 0;
+  }
+
+  .dashboard-container{
+    margin-bottom: 100px;
+    width: 75%;
+  }
+  .datasadashboard{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+}

@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+
+<div class="container body">
+  <h2>{{ folderType }}</h2>
+  <div class="search-box">
+    <i class='bx bx-search-alt-2'></i>
+    <input type="text" placeholder="Search here...">
+  </div>
+</div>
+
+<div class="wrapper container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>{{ folderType }} Document Table</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Document Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let document of documents; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ document.title }}</td>
+            <td>
+              <button type="button" class="btn_edit">
+                <i class='bx bxs-edit-alt'></i>
+              </button>
+              <button type="button" class="btn_view">
+                <i class='bx bx-search-alt-2'></i>
+              </button>
+              <button type="button" class="btn_delete">
+                <i class='bx bxs-trash'></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngFor="let template of availableTemplates; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ template.title }}</td>
+            <td>
+              <button type="button" class="btn_edit">
+                <i class='bx bxs-edit-alt'></i>
+              </button>
+              <button type="button" class="btn_view">
+                <i class='bx bx-search-alt-2'></i>
+              </button>
+              <button type="button" class="btn_delete">
+                <i class='bx bxs-trash'></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngFor="let collab of collaborationData; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ collab.title }}</td>
+            <td>
+              <button type="button" class="btn_edit">
+                <i class='bx bxs-edit-alt'></i>
+              </button>
+              <button type="button" class="btn_view">
+                <i class='bx bx-search-alt-2'></i>
+              </button>
+              <button type="button" class="btn_delete">
+                <i class='bx bxs-trash'></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

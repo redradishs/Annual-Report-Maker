@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="report-container">
+    <div class="report-header">
+        <h1 class="report-title">Annual Report</h1>
+        <img src="../../assets/Logo.png" alt="Company Logo" class="company-logo">
+    </div>
+
+    <div class="report-section">
+        <h2>Executive Summary</h2>
+        <p>{{ annualReport.executive_summary }}</p>
+    </div>
+
+    <div class="report-section">
+        <h2>Company Achievements</h2>
+        <p>{{  annualReport.company_achievements  }}</p>
+    </div>
+
+    <div class="report-section">
+        <h2>Financial Statements</h2>
+        <p>{{ annualReport.financial_statements }}</p>
+    </div>
+
+    <div class="report-section">
+        <h2>Management Discussion</h2>
+        <p>{{ annualReport.management_discussion }}</p>
+    </div>
+
+    <div class="report-section">
+        <h2>Future Outlook</h2>
+        <p>{{ annualReport.future_outlook  }}</p>
+    </div>
+
+    <div class="report-footer">
+        <p>Report Created At: {{ annualReport.created_at }}</p>
+    </div>
+</div>
+
+<div class="button-container">
+    <button class="formbold-btn" (click)="downloadPDF()">Download as PDF</button>
+</div>

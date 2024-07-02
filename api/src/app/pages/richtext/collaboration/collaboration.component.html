@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+
+<div class="document-selection-container">
+  <div class="hehe">
+    <div class="document-card" (click)="redirectToPage()">
+    </div>
+    <p>Blank Document</p>
+  </div>
+  <div *ngFor="let document of collab; let i = index" class="hehe">
+    <div class="document-card" (click)="onDocumentClick(document.document_id)">
+    </div>
+    <p>{{ document.title }}</p>
+  </div>
+</div>

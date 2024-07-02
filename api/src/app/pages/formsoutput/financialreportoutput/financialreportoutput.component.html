@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+
+<div class="report-container" id="report">
+    <div class="header">
+        <div>
+            <img src="../../../../assets/Logo.png" style="width: 150px; height: 150px;" alt="Logo">
+        </div>
+        <div>
+            <h2>Financial Report</h2>
+            <p>Date Created: {{ financialReport.dateCreated | date: 'MMMM d, yyyy' }}</p>
+            <p>Prepared By: {{ financialReport.preparedBy }}</p>
+            <p>Start Date: {{ financialReport.startDate | date: 'MMMM d, yyyy'}}</p>
+            <p>End Date: {{ financialReport.endDate | date: 'MMMM d, yyyy'}}</p>
+        </div>
+    </div>
+    <div class="report-details">
+        <h2>Report Title: {{ financialReport.reportTitle }}</h2>
+    </div>
+    <table *ngIf="financialReport.incomes.length > 0">
+        <thead>
+            <tr>
+                <th>Income Source</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let income of financialReport.incomes">
+                <td>{{ income.source }}</td>
+                <td>{{ income.amount }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="financialReport.expenses.length > 0">
+        <thead>
+            <tr>
+                <th>Expense Item</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let expense of financialReport.expenses">
+                <td>{{ expense.item }}</td>
+                <td>{{ expense.amount }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="spendings">
+        <div class="income">
+            <h3>Income</h3>
+            <p>Total Income: <strong>{{ financialReport.totalIncome }}</strong></p>
+        </div>
+
+        <div class="excess">
+            <h3>Spendings</h3>
+            <p>Total Spending: <strong>{{ financialReport.totalSpendings }}</strong></p>
+        </div>
+
+        <div class="net-income">
+            <h3>Net Income</h3>
+            <p>Total: <strong>{{ financialReport.netIncome }}</strong></p>
+        </div>
+    </div>
+
+    <div class="total">
+        <h3>Executive Summary: </h3>
+        <p style="text-align: center;"><i>{{ financialReport.executiveSummary }}</i></p>
+    </div>
+</div>
+<button class="download-btn" (click)="downloadPDF()">Download PDF</button>

@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', 'sans-serif';
+  background-color: powderblue;
+}
+
+h2 {
+  font-family: 'Poppins', 'sans-serif';
+  position: absolute;
+  color: #d99e6d;
+  font-weight: 600;
+  font-size: 30px;
+  top: 17px;
+  left: 80px;
+  z-index: 1;
+}
+
+/* Book */
+.book {
+  position: relative;
+  width: 400px;
+  height: 560px;
+  transition: transform 0.5s;
+}
+
+.paper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective: 1500px;
+}
+
+.front,
+.back {
+  background-color: rgb(255, 246, 237);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.front {
+  z-index: 1;
+  backface-visibility: hidden;
+  border-left: 3px solid rgb(230, 176, 200);
+}
+
+.front h3 {
+  position: absolute;
+  font-family: 'Poppins', 'sans serif';
+  left: 26px;
+  margin-right: 0px;
+  font-size: 30px;
+  top: 32px;
+  font-weight: 650;
+  color: #d99e6d;
+}/*rightside*/
+
+.front p {
+  font-family: 'Poppins', 'sans serif';
+  margin-left: 0px;
+  margin-right: 0px;
+  color: #494948;
+}
+
+.pcon {
+  text-align: left;
+  object-position: left;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 30px;
+  top: 75px;
+  margin-right: 0px;
+  max-width: 340px;
+}
+
+.pcon p{
+  text-align: left;
+  object-position: left;
+  align-items: left;
+  align-content: left;
+  align-self: left;
+  
+}
+
+.pcon strong {
+  text-align: left;
+  left: 50px;
+  bottom: 500px;
+}
+
+.back {
+  z-index: 0;
+}
+
+.back h3 {
+  position: absolute;
+  font-family: 'Poppins', 'sans serif';
+  left: 30px;
+  font-size: 30px;
+  top: 30px;
+  font-weight: 650;
+  color: #d99e6d;
+}/*leftside*/
+
+.back p {
+  font-family: 'Poppins', 'sans serif';
+  margin-left: 0px;
+  margin-right: 0px;
+  color: #494948;
+}
+
+
+
+
+.front-content,
+.back-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.front-content img,
+.back-content img {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-content {
+  transform: rotateY(180deg);
+}
+
+.image img {
+  position: fixed;
+  left: 90px;
+  top: 320px;
+  width: 220px;
+  height: 220px;
+  align-self: center;
+  margin: 0 auto;
+}/*rightside*/
+
+.image p{
+  position: fixed;
+  left: 35px;
+}
+
+.imageb img {
+  position: fixed;
+  left: 90px;
+  top: 320px;
+  width: 220px;
+  height: 220px;
+  align-self: center;
+  margin: 0 auto;
+}/*leftside*/
+
+.imageb p{
+  position: fixed;
+  top: 280px
+}
+
+/* Paper flip effect */
+.flipped .front,
+.flipped .back {
+  transform: rotateY(-180deg);
+}
+
+
+/* Controller Buttons */
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 40px;
+  transition: transform 0.5s;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover i {
+  color: #636363;
+}
+
+i {
+  font-size: 50px;
+  color: gray;
+}
+
+#prev-btn {
+  z-index: 3;
+}
+
+/* Paper stack order */
+#p1 {
+  z-index: 3;
+}
+
+#p2 {
+  z-index: 2;
+}
+
+#p3 {
+  z-index: 1;
+}
+
+.controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

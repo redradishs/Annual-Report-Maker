@@ -1,0 +1,118 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h4 class="titlebox">Event Report Edit</h4>
+</div>
+<div class="formbold-main-wrapper">
+  <div class="formbold-form-wrapper">
+    <form [formGroup]="eventForm" (ngSubmit)="submitAndNavigate(eventId)">
+      <div class="formbold-input-flex">
+        <div>
+          <input
+            type="text"
+            id="event_name"
+            placeholder="Event Name"
+            class="formbold-form-input"
+            formControlName="event_name"
+          />
+          <div *ngIf="eventForm.get('event_name')?.invalid && eventForm.get('event_name')?.touched" class="text-danger">
+            Event name is required.
+          </div>
+          <label for="event_name" class="formbold-form-label">Event Name</label>
+        </div>
+
+        <div>
+          <input
+            type="date"
+            id="event_date"
+            class="formbold-form-input"
+            formControlName="event_date"
+          />
+          <div *ngIf="eventForm.get('event_date')?.invalid && eventForm.get('event_date')?.touched" class="text-danger">
+            Please enter a valid date (YYYY-MM-DD).
+          </div>
+          <label for="event_date" class="formbold-form-label">Event Date</label>
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <input
+            type="text"
+            id="event_title"
+            placeholder="Event Title"
+            class="formbold-form-input"
+            formControlName="event_title"
+          />
+          <div *ngIf="eventForm.get('event_title')?.invalid && eventForm.get('event_title')?.touched" class="text-danger">
+            Event title is required.
+          </div>
+          <label for="event_title" class="formbold-form-label">Event Title</label>
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <input
+            type="text"
+            id="address"
+            placeholder="Event Address"
+            class="formbold-form-input"
+            formControlName="address"
+          />
+          <div *ngIf="eventForm.get('address')?.invalid && eventForm.get('address')?.touched" class="text-danger">
+            Address is required.
+          </div>
+          <label for="address" class="formbold-form-label">Event Address</label>
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <input
+            type="number"
+            id="expected_participants"
+            placeholder="Expected No. of Participants"
+            class="formbold-form-input"
+            formControlName="expected_participants"
+          />
+          <div *ngIf="eventForm.get('expected_participants')?.invalid && eventForm.get('expected_participants')?.touched" class="text-danger">
+            Please enter a valid number.
+          </div>
+          <label for="expected_participants" class="formbold-form-label">Expected No. of Participants</label>
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <input
+            type="number"
+            id="total_participants"
+            placeholder="Total Participants"
+            class="formbold-form-input"
+            formControlName="total_participants"
+          />
+          <div *ngIf="eventForm.get('total_participants')?.invalid && eventForm.get('total_participants')?.touched" class="text-danger">
+            Please enter a valid number.
+          </div>
+          <label for="total_participants" class="formbold-form-label">Total Participants</label>
+        </div>
+      </div>
+
+      <div class="formbold-textarea">
+        <textarea
+          rows="6"
+          id="summary"
+          placeholder="Summary"
+          class="formbold-form-input"
+          formControlName="summary"
+        ></textarea>
+        <div *ngIf="eventForm.get('summary')?.invalid && eventForm.get('summary')?.touched" class="text-danger">
+          Summary is required.
+        </div>
+        <label for="summary" class="formbold-form-label">Summary</label>
+      </div>
+
+      <button class="formbold-btn" type="submit">Submit</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="lagayan container reportdata">
+  <div class="sidebar">
+    <h1>Event Report</h1>
+  </div>
+  <div class="content">
+    <div class="section">
+      <div class="participants2">
+        <h2>{{ eventReport.event_title }}</h2>
+        <img src="../../assets/Logo.png" alt="Logo" style="width: 100px; height: 100px;">
+      </div>
+      <div class="participants2">
+        <p><strong>Event Name:</strong> {{ eventReport.event_name }}</p>
+        <p><strong>Location:</strong> {{ eventReport.address }}</p>
+      </div>
+      <div class="participants2">
+        <p><strong>Expected Participants:</strong> {{ eventReport.expected_participants }}</p>
+        <p><strong>Total Participants:</strong> {{ eventReport.total_participants }}</p>
+      </div>
+      <p><strong>Summary:</strong> {{ eventReport.summary }}</p>
+    </div>
+    <div class="section">
+      <div class="participants2">
+        <h2>Event Expenses</h2>
+        <p><strong>Date:</strong> {{ eventReport.event_date }}</p>
+      </div>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Amount (PHP)</th>
+        </tr>
+        <tr *ngFor="let expense of eventExpenses">
+          <td><b>{{ expense.item }}</b></td>
+          <td>{{ expense.amount | currency:'PHP' }}</td>
+        </tr>
+        <tr>
+          <th>Total</th>
+          <th>{{ totalExpenses | currency:'PHP' }}</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="button-container">
+  <button class="formbold-btn" (click)="downloadPDF()">Download as PDF</button>
+</div>

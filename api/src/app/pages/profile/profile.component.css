@@ -1,0 +1,228 @@
+body {
+    margin-top: 20px;
+}
+
+.title {
+    position: absolute;
+    color: #d99e6d;
+    font-weight: 600;
+    font-size: 30px;
+    top: 17px;
+    left: 80px;
+    z-index: 1;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    color: #212529;
+    flex-grow: 1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navDash {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 35px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  
+  .navDash h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #d99e6d;
+    font-weight: 600;
+    font-size: 40px;
+    margin-left: 50px;
+    margin-top: 30px;
+
+  }
+  
+  .logos {
+    display: flex;
+    align-items: center;
+
+  }
+  
+  .logos img {
+    height: 70px;
+    width: 70px;
+    margin-left: 10px;
+  
+  }
+  
+  #imgg {
+    height: 80px;
+    width: 70px;
+   
+  }
+  
+.card {
+    margin: 0 auto;
+    border: transparent;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 800px;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-container-container {
+    padding-top: 0;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d99e6d;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-bottom: 0;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 0;
+}
+
+.buttons {
+    background-color: #d99e6d;
+    color: white;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    padding: 10px 30px;
+    margin-right: 10px;
+}
+
+.buttons-cancel {
+    background-color: white;
+    color: #d99e6d;
+    border: 3px solid #d99e6d;
+    border-radius: 5px;
+    padding: 10px 30px;
+}
+
+.ui-w-80 {
+    width: 80px !important;
+    height: auto;
+}
+
+.btn-default {
+    border-color: rgba(24, 28, 33, 0.1);
+    background: rgba(0, 0, 0, 0);
+    color: #4E5155;
+}
+
+label.btn {
+    margin-bottom: 0;
+}
+
+.btn-outline-primary {
+    border-color: #fa8e2a;
+    background: transparent;
+    color: #fa8e2a;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.text-light {
+    color: #babbbc !important;
+}
+
+
+.card {
+    background-clip: padding-box;
+    box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+}
+
+.row-bordered {
+    overflow: hidden;
+}
+
+.account-settings-fileinput {
+    position: absolute;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+
+.profile-picture-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ED7D31;
+    margin-bottom: 20px;
+    position: relative; /* Add this to make positioning relative to the container */
+}
+
+.profile-picture-container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    margin:auto ;
+}
+
+@media (min-width: 768px) {
+    .custom-col-md-3-pt-0 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+.password-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 10px;
+}
+
+@media (min-width: 500px){
+    button{
+        margin-top: 6px;
+    }
+
+}

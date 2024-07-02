@@ -1,0 +1,129 @@
+<app-navbar></app-navbar>
+
+<div class="formbold-main-wrapper">
+  <div class="formbold-form-wrapper">
+    <form [formGroup]="financialReportForm" (ngSubmit)="submitAndNavigate()">
+      <div class="formbold-input-flex">
+        <div>
+          <input
+            type="text"
+            name="report_title"
+            id="report_title"
+            placeholder="Arco Report"
+            class="formbold-form-input"
+            style="width: 100%;"
+            formControlName="report_title"
+          />
+          <label for="report_title" class="formbold-form-label">Report Title</label>
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <input
+            type="date"
+            name="start_date"
+            id="start_date"
+            class="formbold-form-input"
+            formControlName="start_date"
+          />
+          <label for="start_date" class="formbold-form-label">Start Date</label>
+        </div>
+        <div>
+          <input
+            type="date"
+            name="end_date"
+            id="end_date"
+            class="formbold-form-input"
+            formControlName="end_date"
+          />
+          <label for="end_date" class="formbold-form-label">End Date</label>
+        </div>
+      </div>
+
+      <div class="formbold-input-flex">
+        <div>
+          <input
+            type="text"
+            name="prepared_by"
+            id="prepared_by"
+            placeholder="Prepared By"
+            class="formbold-form-input"
+            formControlName="prepared_by"
+          />
+          <label for="prepared_by" class="formbold-form-label">Prepared By</label>
+        </div>
+      </div>
+
+      <div class="formbold-section">
+        <h2 class="formbold-section-title">Income Items</h2>
+        <div formArrayName="incomes">
+          <div *ngFor="let income of incomes.controls; let i = index" [formGroupName]="i" class="formbold-input-flex">
+            <div>
+              <input
+                type="text"
+                placeholder="Source of Income"
+                class="formbold-form-input"
+                formControlName="source"
+              />
+              <label class="formbold-form-label">Source of Income</label>
+            </div>
+            <div>
+              <input
+                type="number"
+                placeholder="Amount"
+                class="formbold-form-input"
+                formControlName="amount"
+              />
+              <label class="formbold-form-label">Amount</label>
+            </div>
+            <button type="button" (click)="removeIncome(i)" class="formbold-btn">Remove</button>
+          </div>
+        </div>
+        <button type="button" (click)="addIncome()" class="formbold-btn">Add Income Item</button>
+      </div>
+
+      <div class="formbold-section">
+        <h2 class="formbold-section-title">Expense Items</h2>
+        <div formArrayName="expenses">
+          <div *ngFor="let expense of expenses.controls; let i = index" [formGroupName]="i" class="formbold-input-flex">
+            <div>
+              <input
+                type="text"
+                placeholder="Expense Item"
+                class="formbold-form-input"
+                formControlName="item"
+              />
+              <label class="formbold-form-label">Expense Item</label>
+            </div>
+            <div>
+              <input
+                type="number"
+                placeholder="Amount"
+                class="formbold-form-input"
+                formControlName="amount"
+              />
+              <label class="formbold-form-label">Amount</label>
+            </div>
+            <button type="button" (click)="removeExpense(i)" class="formbold-btn">Remove</button>
+          </div>
+        </div>
+        <button type="button" (click)="addExpense()" class="formbold-btn">Add Expense Item</button>
+      </div>
+
+      <div class="formbold-textarea">
+        <textarea
+          rows="6"
+          name="executive_summary"
+          id="executive_summary"
+          placeholder="Summary"
+          class="formbold-form-input"
+          formControlName="executive_summary"
+        ></textarea>
+        <label for="executive_summary" class="formbold-form-label">Executive Summary</label>
+      </div>
+
+      <button class="formbold-btn" type="submit">Submit</button>
+    </form>
+  </div>
+</div>

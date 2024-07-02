@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+
+<link rel="stylesheet" href="createform.component.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<h2 class="createf">Create Form</h2>
+<div class="document-selection-container">
+  <div class="hehe">
+    <div class="document-card bass" (click)="redirectToPage()">
+      <button type="button" class="button-docu-blank">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+        <p>Blank Document</p>
+  </div>
+  <div *ngFor="let template of availableTemplates; let i = index" class="hehe">
+    <div class="document-card" (click)="onTemplateClick(template.id)">
+      <p class="document-card-img"><img src="/assets/Logo.png"></p>
+    </div>
+    <p>{{ template.title }}</p>
+  </div>
+  
+</div>
+
+
+<section class="gitna">
+  <div class="full-container">
+    <div class="grid">
+      <div class="card">
+        <img class="picture" src="../../assets/asset.png" alt="blog">
+        <h1 class="title">Annual Report</h1>
+        <p class="desc">Quick and simple Annual Report Template</p>
+        <div class="mt-4">
+          <button class="button" [routerLink]="['annualreport']">Select</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="picture" src="../../assets/asset.png" alt="blog">
+        <h1 class="title">Event Report</h1>
+        <p class="desc">Quick and simple Event Report Template</p>
+        <div class="mt-4">
+          <button class="button" [routerLink]="['eventreport']">Select</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="picture" src="../../assets/asset.png" alt="blog">
+        <h1 class="title">Finance Report</h1>
+        <p class="desc">Quick and simple Finance Report Template</p>
+        <div class="mt-4">
+          <button class="button" [routerLink]="['financialreport']">Select</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="picture" src="../../assets/asset.png" alt="blog">
+        <h1 class="title">Project Report</h1>
+        <p class="desc">Quick and simple Project Report Template</p>
+        <div class="mt-4">
+          <button class="button" [routerLink]="['projectreportstatus']">Select</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

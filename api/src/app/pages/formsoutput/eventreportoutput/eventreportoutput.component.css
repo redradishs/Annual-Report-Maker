@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.sidebar {
+    background-color:  #e29e6a;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar h1 {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin: 0;
+}
+.sidebar .contact {
+    margin-top: auto;
+    text-align: center;
+}
+.content {
+    width: 80%;
+    padding: 20px;
+    flex-grow: 1;
+}
+.section {
+    margin-bottom: 20px;
+}
+.section h2 {
+    background-color: #e29e6a;
+    color: white;
+    padding: 2px;
+    display: inline-block;
+}
+.team {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.team img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #e29e6a;
+    color: white;
+}
+.participants {
+    display: flex;
+    justify-content: space-around;
+}
+.participants2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+.formbold-btn {
+    background-color: #e29e6a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+.formbold-btn:hover {
+    background-color: #34495e;
+}

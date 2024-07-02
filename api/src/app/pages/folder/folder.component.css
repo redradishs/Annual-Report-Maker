@@ -1,0 +1,151 @@
+/* folder.component.css */
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+.body {
+  min-height: 2vh;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-bottom: 50px;
+  margin-left: 60px;
+}
+
+.body h2 {
+  font-family: 'Poppins','sans-serif';
+  color: #d99e6d;
+  font-weight: 600;
+  font-size: 45px;
+  padding: 20px;
+  line-height: 25px;
+}
+
+.search-box {
+  position: relative;
+  height: 45px;
+  max-width: 500px;
+  width: 100%; 
+  margin-top: 100px; 
+}
+
+.search-box input {
+  position: absolute;
+  border: 1px solid #d99e6d;
+  background-color: #fff;
+  padding: 0 25px 0 50px;
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  color: #666;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  box-shadow: 2.5px 3px 0 #d99e6d;
+  transition: ease 0.25s;
+}
+
+.search-box input:focus {
+  box-shadow: 5px 7px 0 #d99e6d;
+}
+
+.search-box i {
+  position: absolute;
+  left: 15px;
+  font-size: 22px;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #707070;
+}
+
+.wrapper ul {
+  display: grid;
+  gap: -50px;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.wrapper li {
+  margin-top: 10px;
+  margin-left: 50px;
+  height: 175px;
+  width: 160px;
+  list-style: none;
+  border-radius: 5px;
+  padding: 10px 15px 15px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.13);
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.wrapper li:hover {
+  transform: translateY(-10px);
+}
+
+.wrapper a {
+  outline: none;
+  text-decoration: none;
+}
+
+.wrapper a:hover {
+  outline: none;
+}
+
+h3 {
+  color: #d99e6d;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  color: #d99e6d;
+  text-align: left;
+  box-shadow: 5px 5px 2px #d99e6d;
+}
+
+.table td button {
+  outline: none;
+  border: none;
+  color: #fff;
+  padding: 0.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #d99e6d;
+  margin: 1px;
+  transition: 0.5s;
+}
+
+.table td button:hover {
+  transition: 0.1s;
+  color: black;
+  position: relative;
+  margin-top: -4px;
+  opacity: 100%;
+}
+
+.table td button i {
+  font-size: medium;
+  justify-content: center;
+}
+
+.table td button:active {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 640px) {
+  .body h2 {
+    line-height: 45px;
+  }
+}

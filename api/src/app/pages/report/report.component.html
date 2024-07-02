@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+
+<div class="container body">
+  <h2>Folder Report</h2>
+  <div class="search-box">
+    <i class='bx bx-search-alt-2'></i>
+    <input type="text" placeholder="Search here...">
+  </div>
+</div>
+
+<div class="wrapper container">
+  <div class="row">
+    <div class="col-md-2">
+      <li class="add-box">
+        <!-- <button (click)="addNewFolder()"></button> -->
+        <button type="button" class="button-docu-blank" (click)="addNewFolder()">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </li>
+    </div>
+    <!-- Static folders -->
+    <div *ngFor="let folder of staticFolders" class="col-md-2">
+      <li class="add-box">
+        <a [routerLink]="['/report/folder', folder.folder_name]">
+          <div class="icon"><i class='bx bx-folder-open'></i></div>
+          <p>{{ folder.folder_name }}</p>
+        </a>
+      </li>
+    </div>
+    <!-- Dynamic user folders -->
+    <div *ngFor="let folder of userFolders" class="col-md-2">
+      <li class="add-box">
+        <a [routerLink]="['/report/folder', folder.folder_id, folder.folder_name]">
+          <div class="icon"><i class='bx bx-folder-open'></i></div>
+          <p>{{ folder.folder_name }}</p>
+        </a>
+        <button (click)="deleteFolder(folder.folder_id)" class="buttonn-docu-blank"><i class="fa-regular fa-trash-can"></i></button>
+      </li>
+    </div>
+    <!-- Add new folder -->
+  </div>
+</div>
+
+<div class="container">
+  <section class="table_content">
+    <div class="tbl_data">
+      <h3>Unassigned Documents</h3>
+      <ul *ngFor="let report of unfolderedRichtext" class="tbl_tr_content">
+        <li>{{ report.id }}</li>
+        <li>{{ report.title }}</li>
+        <li>
+          <select (change)="assignToFolder(report.id, $event)">
+            <option value="">Select Folder</option>
+            <option *ngFor="let folder of userFolders" [value]="folder.folder_id">{{ folder.folder_name }}</option>
+          </select>
+        </li>
+        <li>
+          <button type="button" class="btn_edit">
+            <i class='bx bxs-edit-alt'></i>
+          </button>
+          <button type="button" class="btn_view">
+            <i class='bx bxs-low-vision'></i>
+          </button>
+          <button type="button" class="btn_delete">
+            <i class='bx bxs-trash'></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>

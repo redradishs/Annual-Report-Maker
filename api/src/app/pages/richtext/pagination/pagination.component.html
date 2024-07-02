@@ -1,0 +1,9 @@
+<div class="pagination">
+    <button [disabled]="currentPage === 1" (click)="selectPage(1)"><<</button>
+    <button [disabled]="currentPage === 1" (click)="selectPage(currentPage - 1)"><</button>
+    <button *ngFor="let page of visiblePages" [ngClass]="currentPage === page? 'elected' : ''" (click)="selectPage(page)">
+      {{ page }}
+    </button>
+    <button [disabled]="currentPage === totalPages" (click)="selectPage(currentPage + 1)">></button>
+    <button [disabled]="currentPage === totalPages" (click)="selectPage(totalPages)">>></button>
+  </div>

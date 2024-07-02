@@ -1,0 +1,83 @@
+<div class="body">
+    <app-navbar></app-navbar>
+    <form>
+        <div class="reportdata container">
+            <img src="/assets/header.png" alt="Project Header">
+                <div class="date-column">
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <p>{{ projectStatusReport.startDate }}</p>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+                    <p>{{ projectStatusReport.endDate }}</p>
+                </div>
+            </div>
+            <div class="project-Details">
+            <h2>Project Details :</h2>
+            <div class="form-group">
+                <label for="projectName">Project Name :</label>
+                <p>{{ projectStatusReport.projectName }}</p>
+            </div>
+            <div class="form-group">
+                <label for="projectManager">Project Manager :</label>
+                <p>{{ projectStatusReport.projectManager }}</p>
+            </div>
+            
+        </div>
+            <div class="status-progress">
+                <h2>Overall Progress Details :</h2>
+                <div class="form-group">
+                    <label for="statusDesc">Status :</label>
+                    <p>{{ projectStatusReport.statusDesc }}</p>
+                </div>
+                <div class="form-group">
+                    <label for="overallProgress">Overall Progress :</label>
+                    <p>{{ projectStatusReport.overallProgress }}</p>
+                </div>
+            </div>
+            <div class="milestones">
+                <h2>Milestones Details :</h2>
+                <table class="reportdata">
+                    <tr>
+                        <th>Milestone</th>
+                        <th>Completion Date</th>
+                    </tr>
+                    <tr>
+                        <td><p>{{ projectStatusReport.milestoneDesc }}</p></td>
+                        <td><p>{{ projectStatusReport.compeDate }}</p></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tasks">
+                <h2>Tasks Details :</h2>
+                <table class="reportdata">
+                    <tr>
+                        <th>Task</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td><p>{{ projectStatusReport.taskDesc }}</p></td>
+                        <td><p>{{ projectStatusReport.stat }}</p></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="issues">
+                <h2>Issues Details :</h2>
+                <table class="reportdata">
+                    <tr>
+                        <th>Issue</th>
+                        <th>Priority</th>
+                    </tr>
+                    <tr>
+                        <td><p>{{ projectStatusReport.issuesName }}</p></td>
+                        <td><p>{{ projectStatusReport.issuesPrio }}</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+            <button class="formbold-btn"  (click)="downloadPDF()">Download as PDF</button>
+
+    </form>
+</div>

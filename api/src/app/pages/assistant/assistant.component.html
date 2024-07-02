@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<button id="open-chatbox" class="open-chatbox-btn animate__animated animate__fadeIn">Chat with us</button>
+
+<div id="chatbox" class="chatbox chatbox-hidden animate__animated animate__fadeInUp">
+    <div class="chatbox-header">
+        <span>Arco Web Assistant</span>
+        <button id="close-chatbox" class="close-btn" (click)="closeChatbox()">&times;</button>
+    </div>
+    <div class="chatbox-body" id="chatbox-body">
+        <div *ngFor="let message of messages" class="message" [ngClass]="{'ai-message': message.type === 'ai', 'user-message': message.type === 'user'}">
+            <p>{{message.content}}</p>
+            <button *ngIf="message.type === 'ai'" class="copy-btn" (click)="copyMessage($event)">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/copy.png" alt="Copy">
+            </button>
+        </div>
+    </div>
+    <div class="chatbox-footer">
+        <input type="text" id="user-message" placeholder="Message..." [(ngModel)]="userMessage" (keypress)="handleKeyPress($event)">
+        <button id="send-message" (click)="sendMessage()">
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/filled-sent.png" alt="Send">
+        </button>
+    </div>
+</div>
+

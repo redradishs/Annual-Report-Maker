@@ -1,0 +1,81 @@
+<div class="body">
+    <app-navbar></app-navbar>
+    <form [formGroup]="projectStatusReport" (ngSubmit)="submitAndNavigate()">
+        <div class="container">
+            <h1>Project Status Report</h1>
+            <div class="date-column">
+                <div class="form-group">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" formControlName="startDate" class="form-control" required [ngModel]="formatDate(projectStatusReport.get('startDate')?.value)">
+                </div>
+                <div class="form-group">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" formControlName="endDate" class="form-control" required>
+                </div>
+            </div>
+            <div class="project-Details">
+            <h2>Project Details :</h2>
+            <div class="form-group">
+                <label for="project-name">Project Name :</label>
+                <input type="text" id="project-name" formControlName="projectName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="project-manager">Project Manager :</label>
+                <input type="text" id="project-manager" formControlName="projectManager" class="form-control" required>
+            </div>
+            
+        </div>
+            <div class="status-progress">
+                <h2>Overall Progress Details :</h2>
+                <div class="form-group">
+                    <label for="status">Status :</label>
+                    <input type="text" id="status" class="form-control" formControlName="statusDesc" required>
+                </div>
+                <div class="form-group">
+                    <label for="overall-progress">Overall Progress :</label>
+                    <input type="text" id="overall-progress" formControlName="overallProgress" class="form-control" required>
+                </div>
+            </div>
+            <div class="milestones">
+                <h2>Milestones Details :</h2>
+                <table class="reportdata">
+                    <tr>
+                        <th>Milestone</th>
+                        <th>Completion Date</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" [formControlName]="'milestoneDesc'" class="form-control"></td>
+                        <td><input type="date" [formControlName]="'compeDate'" class="form-control"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tasks">
+                <h2>Tasks Details :</h2>
+                <table class="reportdata">
+                    <tr>
+                        <th>Task</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" [formControlName]="'taskDesc'" class="form-control"></td>
+                        <td><input type="text" [formControlName]="'stat'" class="form-control"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="issues">
+                <h2>Issues Details :</h2>
+                <table class="reportdata">
+                    <tr>
+                        <th>Issue</th>
+                        <th>Priority</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" [formControlName]="'issuesName'" class="form-control"></td>
+                        <td><input type="text" [formControlName]="'issuesPrio'" class="form-control"></td>
+                    </tr>
+                </table>
+            </div>
+            <button class="formbold-btn" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
