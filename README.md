@@ -49,9 +49,9 @@ demopage: https://gcccsarco.online
 18. Chatbot
 
 ## Technologies Used
-Frontend: Angular
-Backend: PHP (using PDO for database interactions)
-Database: MySQL
+1. Frontend: Angular
+2. Backend: API PHP
+3. Database: MySQL
 
 
 
