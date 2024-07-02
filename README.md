@@ -13,7 +13,6 @@ This project is designed to manage annual reports, collaboration documents, and 
 - [Templates](#templates)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
@@ -58,10 +57,6 @@ Database: MySQL
 
 ## In Collaboration with
 
-ICTe Solutions 2024
-
-## Name
-
-Full Stack Developer
+ICTe Solutions 2024 - Red Sanchez (Full Stack Developer)
 
    
