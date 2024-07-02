@@ -31,4 +31,37 @@ This project is designed to manage annual reports, collaboration documents, and 
 demopage: https://gcccsarco.online
 
 
+## Features
+1. Report Maker
+2. Create, view, edit, and delete folders.
+3. Static folders for "Collaboration" and "Templates".
+4. Dynamic user folders that can be created and deleted.
+5. Report Management
+6. View, edit, and delete reports.
+9. Assign reports to specific folders.
+10. Handle unassigned reports.
+11. Collaboration
+12. Manage collaboration documents.
+13. Templates
+14. Manage templates for reports.
+15. Summary of Reports
+16. Downloadable Reports
+17. Versatile Rich Text Editor with Grammar Checker and Autocomplete
+18. Chatbot
+
+## Technologies Used
+Frontend: Angular
+Backend: PHP (using PDO for database interactions)
+Database: MySQL
+
+
+
+## In Collaboration with
+
+ICTe Solutions 2024
+
+## Name
+
+Full Stack Developer
+
    
