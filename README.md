@@ -28,6 +28,7 @@ This project is designed to manage annual reports, collaboration documents, and 
 4. Manage collaboration documents and templates.
 
 demopage: https://gcccsarco.online
+demopage: http://arcoreportmaker.unaux.com/
 
 
 ## Features
@@ -50,7 +51,7 @@ demopage: https://gcccsarco.online
 
 ## Technologies Used
 1. Frontend: Angular
-2. Backend: API PHP
+2. Backend: RESTful API
 3. Database: MySQL
 
 
