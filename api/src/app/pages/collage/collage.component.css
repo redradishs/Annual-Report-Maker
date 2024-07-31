@@ -13,16 +13,15 @@ body {
   align-items: center;
   width: 100%;
   padding: 10px 35px;
-  position: fixed;
-  top: 0;
-  left: 0;
+  margin-top: -170px;
+  margin-left: -430px;
 }
 
 .navDash h2 {
   font-family: 'Poppins', sans-serif;
   color: #d99e6d;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 50px;
   margin-left: 50px;
   margin-top: 30px;
 }
@@ -84,14 +83,10 @@ body {
   background-color: #c88656;
 }
 
-.grid-preview1 {
+.grid-preview1,
+.grid-preview2 {
   width: 314px; /* Adjust width as needed */
   height: 314px; /* Adjust height as needed */
-}
-
-.grid-preview2 {
-  width: 300px; /* Adjust width as needed */
-  height: 300px; /* Adjust height as needed */
 }
 
 .grid-preview:hover {
@@ -164,6 +159,7 @@ body {
   align-items: left;
   justify-content: left;
   width: 50%;
+
 }
 
 .dropzone {
@@ -208,15 +204,17 @@ body {
 
 .button-container {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: center; /* Center the buttons vertically */
+  gap: 10px; /* Add space between buttons if needed */
+  margin-top: 50px; /* Space above the buttons */
 }
 
 .create-btn,
 .cancel-btn,
-.save-btn {
+.save-btn,
+.exit-btn {
   text-decoration: none;
-  margin: 0 10px;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -224,13 +222,11 @@ body {
   font-weight: 600;
   font-size: 15px;
   border-radius: 20px;
-  margin-top: 100px;
+  margin-bottom: 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .create-btn {
-  position: absolute;
-  margin-right: 660px;
   background-color: #d99e6d;
   color: white;
 }
@@ -241,8 +237,6 @@ body {
 }
 
 .cancel-btn {
-  position: absolute;
-  margin-right: 450px;
   background-color: whitesmoke;
   color: #4F4A45;
 }
@@ -257,11 +251,16 @@ body {
   color: white;
 }
 
-canvas {
-  margin-left: 700px;
-  margin-top: 0px;
-  border: 3px solid #d99e6d;
-  border-radius: 20px;
+.exit-btn {
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: whitesmoke;
+  color: #4F4A45;
+}
+
+.exit-btn:hover{
+  background-color: #cbc9c9;
+  color: white;
 }
 
 @media (max-width: 1300px) {
@@ -272,13 +271,8 @@ canvas {
     text-align: center;
   }
 
-  .title2 h2,
-  canvas {
+  .title2 h2 {
     margin: 20px auto;
-  }
-
-  canvas {
-    margin-top: 300px;
   }
 
   .image-upload-container {
@@ -344,17 +338,9 @@ canvas {
     text-align: center;
   }
 
-  .button-container,
-  canvas {
+  .button-container {
     position: static;
     margin: 20px 0;
-  }
-
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
   }
 
   .create-btn,
@@ -384,3 +370,43 @@ canvas {
     transform: scale(1.1);
   }
 }
+
+/* Add this CSS for the download button */
+.download-btn {
+  text-decoration: none;
+  margin: 20px 0; /* Add space above and below the button */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 20px;
+  background-color: #d99e6d;
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.download-btn:hover {
+  background-color: #c88656;
+}
+
+
+/* Position the canvas above the download button */
+canvas {
+  margin-bottom: 110px;
+  margin-left: 900px;
+  border: 3px solid #d99e6d;
+  border-radius: 20px;
+  display: block; /* Ensure canvas is displayed */
+}
+
+/* Ensure canvas does not overlap other elements */
+canvas.collage-created {
+  margin-bottom: -100px;
+  display: block;
+}
+
+
+

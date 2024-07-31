@@ -1,32 +1,53 @@
-<app-navbar></app-navbar>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="collage.component.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+    <title>COLLAGE</title>
+</head>
 <body>
+    <app-navbar></app-navbar>
     <main>
         <div class="navDash">
             <h2>Collage</h2>
         </div>
         <section id="format-selection">
             <div class="container">
+                <div class="logos">
+                    <img src="/assets/GC_LOGO.png" alt="GCLOGO" id="imgg">
+                    <img src="/assets/GCCCS_LOGO.png" alt="GCCCSLOGO">
+                </div>
                 <div class="title">
                     <h1 *ngIf="!selectedFormat">Select Format:</h1>
                 </div>
                 <div class="formats" *ngIf="!selectedFormat">
                     <div class="format-option-wrapper">
                         <button class="format-option" (click)="selectFormat('3x3')">
-                            <img src="assets/3x3.png" alt="3x3 Grid Preview" class="grid-preview1">
+                            <img src="/assets/3x3.png" alt="3x3 Grid Preview" class="grid-preview1">
                         </button>
-                        <button class="format-option" (click)="selectFormat('4x4')">
-                            <img src="assets/4x4.png" alt="4x4 Grid Preview" class="grid-preview2">
+                        <button class="format-option" (click)="selectFormat('2x2')">
+                            <img src="/assets/2x2.png" alt="4x4 Grid Preview" class="grid-preview2">
                         </button>
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="upload-section" *ngIf="selectedFormat">
-        <section id="upload-section">
+            <div class="navDash">
+                <h2>Collage</h2>
+            </div>
+            <div class="logos">
+                <img src="/assets/GC_LOGO.png" alt="GCLOGO" id="imgg">
+                <img src="/assets/GCCCS_LOGO.png" alt="GCCCSLOGO">
+            </div>
             <div class="container">
                 <div class="title">
                     <h1>Documentation / Picture:</h1>
                     <label for="fileInput" id="fileInputLabel">Upload your picture(s) here.</label>
+                    <!-- <button (click)="shareCollage()" *ngIf="isCollageCreated">Share Collage</button> -->
                     <input #imageInput type="file" id="fileInput" (change)="onFileSelected(imageInput.files)" multiple style="display: none;">
                 </div>
                 <div class="title2">
@@ -41,12 +62,15 @@
                     </div>
                     <div class="button-container">
                         <button class="create-btn" (click)="createCollage()">Create</button>
+                        <button class="save-btn" (click)="downloadCollage()" *ngIf="isCollageCreated">Download Collage</button>
                         <button class="cancel-btn" (click)="cancelCollage()">Cancel</button>
+                        <button class="exit-btn" (click)="exitCollage()">Select Format</button>
                     </div>
                 </div>
-                <canvas #collageCanvas></canvas>
+                <canvas #collageCanvas [class.collage-created]="isCollageCreated"></canvas>
             </div>
         </section>
-        </section>
+        
+  
     </main>
 </body>

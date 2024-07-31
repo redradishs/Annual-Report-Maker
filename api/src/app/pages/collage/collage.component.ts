@@ -19,11 +19,12 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./collage.component.css']
 })
 export class CollageComponent {
-  imageUrls: string[] = []; // Initialize an empty array to store image URLs
+  imageUrls: string[] = [];
   selectedFiles: File[] = [];
   userId: number | null = null;
   selectedFormat: string | null = null;
-
+  isCollageCreated = false; // Added variable
+  showToast = false;
 
   @ViewChild('imageInput') imageInput!: ElementRef<HTMLInputElement>;
   @ViewChild('collageCanvas') collageCanvas!: ElementRef<HTMLCanvasElement>;
@@ -32,8 +33,7 @@ export class CollageComponent {
     private browserService: BrowserService, 
     private authService: AuthService,
     private http: HttpClient, 
-    private router: Router,
-    private apiService: ApiService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -47,8 +47,16 @@ export class CollageComponent {
     });
   }
 
+  selectFormat(format: string) {
+    if (['2x2', '3x3'].includes(format)) {
+      this.selectedFormat = format;
+    } else {
+      console.error('Unsupported format selected');
+    }
+  }
+
   onFileSelected(files: FileList | null) {
-    const maxImages = 8;
+    const maxImages = this.selectedFormat === '2x2' ? 4 : this.selectedFormat === '3x3' ? 9 : 16;
     if (files) {
       for (let i = 0; i < Math.min(maxImages - this.imageUrls.length, files.length); i++) {
         const reader = new FileReader();
@@ -61,17 +69,10 @@ export class CollageComponent {
       }
     }
   }
-
-  selectFormat(format: string) {
-    this.selectedFormat = format;
-  }
-
-
   removeImage(imageUrl: string) {
     this.imageUrls = this.imageUrls.filter(url => url !== imageUrl);
   }
 
-  
   onDrop(event: DragEvent) {
     event.preventDefault();
     const files = event.dataTransfer?.files;
@@ -91,39 +92,104 @@ export class CollageComponent {
     event.stopPropagation();
   }
 
+  createCollage() {
+  if (this.browserService.document && this.selectedFormat) {
+    const canvas: HTMLCanvasElement = this.collageCanvas.nativeElement;
+    const ctx = canvas.getContext('2d');
 
- createCollage() {
-    if (this.browserService.document && this.selectedFormat) {
-      const canvas: HTMLCanvasElement = this.collageCanvas.nativeElement;
-      const ctx = canvas.getContext('2d');
 
-      if (ctx) {
-        const gridSize = this.selectedFormat === '3x3' ? 3 : 4;
-        const cellSize = 100; // Set the cell size to a fixed value
-        const collageSize = cellSize * gridSize;
+    if (ctx) {
+      // Determine gridSize and cellSize based on the selected format
+      const gridSize = this.selectedFormat === '2x2' ? 2 : this.selectedFormat === '3x3' ? 3 : 4;
+      const cellSize = this.selectedFormat === '2x2' ? 200 : 150; // Adjust cellSize based on format
+      const gap = 5; // Gap between images
+      const collageSize = (cellSize + gap) * gridSize - gap; // Adjust collage size to account for gaps
 
-        canvas.width = collageSize;
-        canvas.height = collageSize;
+      canvas.width = collageSize;
+      canvas.height = collageSize;
 
-        ctx.clearRect(0, 0, collageSize, collageSize);
+      ctx.clearRect(0, 0, collageSize, collageSize);
 
-        let imagePromises = this.imageUrls.map((imageUrl) => this.loadImage(imageUrl));
+      let imagePromises = this.imageUrls.map((imageUrl) => this.loadImage(imageUrl));
 
-        Promise.all(imagePromises).then(images => {
-          images.forEach((img, index) => {
-            const x = (index % gridSize) * cellSize;
-            const y = Math.floor(index / gridSize) * cellSize;
-            ctx.drawImage(img, x, y, cellSize, cellSize);
-          });
-
-          // Convert the canvas to a data URL and submit it to the server
-          const collageDataUrl = canvas.toDataURL();
-          this.submitAndNavigate(collageDataUrl);
+      Promise.all(imagePromises).then(images => {
+        images.forEach((img, index) => {
+          const row = Math.floor(index / gridSize);
+          const col = index % gridSize;
+          const x = col * (cellSize + gap);
+          const y = row * (cellSize + gap);
+          ctx.drawImage(img, x, y, cellSize, cellSize);
         });
-      }
+
+        // Convert the canvas to a data URL and submit it to the server
+        const collageDataUrl = canvas.toDataURL();
+        this.submitAndNavigate(collageDataUrl);
+        this.isCollageCreated = true; // Set to true when collage is created
+
+      });
+    }
+  }
+}
+
+  
+  downloadCollage() {
+    if (this.isCollageCreated) {
+      const canvas: HTMLCanvasElement = this.collageCanvas.nativeElement;
+      const collageDataUrl = canvas.toDataURL('image/png');
+  
+      // Create a temporary anchor element and click it to start the download
+      const link = document.createElement('a');
+      link.href = collageDataUrl;
+      link.download = 'collage.png';
+      link.click();
+  
+      // Optional: Log the URL to the console or handle it as needed
+      console.log('Collage URL:', collageDataUrl);
+    } else {
+      console.error('Collage has not been created yet.');
     }
   }
 
+  // shareCollage() {
+  //   if (this.isCollageCreated) {
+  //     const canvas: HTMLCanvasElement = this.collageCanvas.nativeElement;
+  //     const collageDataUrl = canvas.toDataURL('image/png');
+  
+  //     if (navigator.share) {
+  //       // Web Share API does not support Data URLs, so this will be a fallback method
+  //       navigator.share({
+  //         title: 'My Collage',
+  //         text: 'Check out this collage I made!',
+  //         // URL can be shared if it's uploaded to a server
+  //         url: 'https://your-server-path/' + encodeURIComponent(collageDataUrl)
+  //       }).then(() => {
+  //         console.log('Collage shared successfully');
+  //       }).catch((error) => {
+  //         console.error('Error sharing collage:', error);
+  //       });
+  //     } else {
+  //       console.log('Web Share API is not supported in this browser.');
+  //       // Provide a fallback: Copy to clipboard
+  //       this.copyToClipboard(collageDataUrl);
+  //       alert('Collage URL copied to clipboard');
+  //     }
+  //   } else {
+  //     console.error('Collage has not been created yet.');
+  //   }
+  // }
+  
+  // copyToClipboard(text: string) {
+  //   const textArea = document.createElement('textarea');
+  //   textArea.value = text;
+  //   document.body.appendChild(textArea);
+  //   textArea.select();
+  //   document.execCommand('copy');
+  //   document.body.removeChild(textArea);
+  //   console.log('Collage URL copied to clipboard:', text);
+  // }
+  
+
+  
   submitAndNavigate(collageDataUrl: string) {
     if (this.userId !== null) {
       const collageData = {
@@ -131,8 +197,9 @@ export class CollageComponent {
         collage: collageDataUrl
       };
 
+      const endpoint = `https://gcccsarco.online/arcoapi/api/collage/${this.userId}`;
 
-      this.apiService.submitCollage(this.userId, collageData)
+      this.http.post(endpoint, collageData)
         .subscribe(
           (response) => {
             console.log('Collage submitted:', response);
@@ -147,10 +214,40 @@ export class CollageComponent {
     }
   }
 
-  cancelCollage() {
+
+  cancelCollage(event?: MouseEvent) {
+    if (event) {
+      event.preventDefault(); // Prevent default button action
+    }
+    
+    // Clear image URLs
+    this.imageUrls = [];
+  
+    // Reset file input
+    if (this.imageInput) {
+      this.imageInput.nativeElement.value = '';
+    }
+  
+    // Reset collage state
+    // this.selectedFormat = null;
+    // this.isCollageCreated = false;
+  
+    // Clear canvas if it exists
+    if (this.collageCanvas && this.collageCanvas.nativeElement) {
+      const canvas: HTMLCanvasElement = this.collageCanvas.nativeElement;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+  }
+  
+
+  exitCollage() {
     this.imageUrls = [];
     this.imageInput.nativeElement.value = '';
     this.selectedFormat = null;
+    this.isCollageCreated = false; // Reset when cancelled
     if (this.browserService.document) {
       const canvas: HTMLCanvasElement = this.collageCanvas.nativeElement;
       const ctx = canvas.getContext('2d');
