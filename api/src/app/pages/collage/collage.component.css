@@ -3,8 +3,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   height: 100vh;
 }
 
@@ -13,17 +12,16 @@ body {
   align-items: center;
   width: 100%;
   padding: 10px 35px;
-  margin-top: -170px;
-  margin-left: -430px;
+  background-color: #f0f0f0; /* Optional: Add a background color to the navbar */
 }
 
 .navDash h2 {
+  margin-left: 50px;
+  margin-top: 20px;
   font-family: 'Poppins', sans-serif;
   color: #d99e6d;
   font-weight: 600;
-  font-size: 50px;
-  margin-left: 50px;
-  margin-top: 30px;
+  font-size: 40px;
 }
 
 .logos {
@@ -79,18 +77,19 @@ body {
   align-items: center;
 }
 
-.format-option:hover {
+/*.format-option:hover {
   background-color: #c88656;
-}
+}*/
 
-.grid-preview1,
-.grid-preview2 {
+.grid-preview {
   width: 314px; /* Adjust width as needed */
   height: 314px; /* Adjust height as needed */
+  transition: transform 0.3s ease; /* Smooth transition for the scale effect */
 }
 
 .grid-preview:hover {
   cursor: pointer;
+  transform: scale(1.05); /* Slight scale effect for visual feedback */
 }
 
 #upload-section .container {
@@ -183,19 +182,23 @@ body {
 
 .uploaded-images {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  width: 80%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  white-space: nowrap; /* Prevent wrapping of images */
+  width: 100%; /* Full width of the parent container */
+  height: 120px; /* Fixed height for the container */
+  margin-top: 10px; /* Adjust as needed */
+  padding: 10px; /* Add some padding if desired */
+  border: 2px solid #d99e6d; /* Optional: add border around the scroll area */
+  border-radius: 10px; /* Optional: add rounded corners */
 }
 
 .uploaded-images img {
-  width: 100px;
-  height: 100px;
+  height: 100px; /* Fixed height for images */
+  width: auto; /* Maintain aspect ratio */
   object-fit: cover;
-  margin: 5px;
-  border-radius: 3px;
-  transition: opacity 0.3s ease;
-  cursor: pointer;
+  margin-right: 10px; /* Spacing between images */
+  border-radius: 3px; /* Optional: add rounded corners */
 }
 
 .uploaded-images img:hover {
@@ -204,12 +207,14 @@ body {
 
 .button-container {
   display: flex;
-  justify-content: center; /* Center the buttons horizontally */
+  justify-content: flex-start; /* Align buttons to the left */
   align-items: center; /* Center the buttons vertically */
   gap: 10px; /* Add space between buttons if needed */
   margin-top: 50px; /* Space above the buttons */
+  width: 100%; /* Ensure container takes full width */
 }
 
+/* Individual button styles */
 .create-btn,
 .cancel-btn,
 .save-btn,
@@ -258,7 +263,7 @@ body {
   color: #4F4A45;
 }
 
-.exit-btn:hover{
+.exit-btn:hover {
   background-color: #cbc9c9;
   color: white;
 }
@@ -400,6 +405,8 @@ canvas {
   border: 3px solid #d99e6d;
   border-radius: 20px;
   display: block; /* Ensure canvas is displayed */
+  width: 500px; /* Set your desired fixed width */
+  height: 500px; /* Set your desired fixed height */
 }
 
 /* Ensure canvas does not overlap other elements */
@@ -407,6 +414,7 @@ canvas.collage-created {
   margin-bottom: -100px;
   display: block;
 }
+
 
 
 

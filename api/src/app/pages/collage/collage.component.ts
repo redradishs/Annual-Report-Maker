@@ -48,7 +48,7 @@ export class CollageComponent {
   }
 
   selectFormat(format: string) {
-    if (['2x2', '3x3'].includes(format)) {
+    if (['2x2', '3x3', '4x4'].includes(format)) {
       this.selectedFormat = format;
     } else {
       console.error('Unsupported format selected');
@@ -56,7 +56,10 @@ export class CollageComponent {
   }
 
   onFileSelected(files: FileList | null) {
-    const maxImages = this.selectedFormat === '2x2' ? 4 : this.selectedFormat === '3x3' ? 9 : 16;
+    const maxImages = this.selectedFormat === '2x2' ? 4 :
+                      this.selectedFormat === '3x3' ? 9 :
+                      this.selectedFormat === '4x4' ? 16 : 0;
+
     if (files) {
       for (let i = 0; i < Math.min(maxImages - this.imageUrls.length, files.length); i++) {
         const reader = new FileReader();
@@ -69,6 +72,7 @@ export class CollageComponent {
       }
     }
   }
+  
   removeImage(imageUrl: string) {
     this.imageUrls = this.imageUrls.filter(url => url !== imageUrl);
   }

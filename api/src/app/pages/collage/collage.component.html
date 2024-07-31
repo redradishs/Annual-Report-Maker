@@ -13,49 +13,48 @@
         <div class="navDash">
             <h2>Collage</h2>
         </div>
-        <section id="format-selection">
+        <section id="format-selection" *ngIf="!selectedFormat">
             <div class="container">
                 <div class="logos">
                     <img src="/assets/GC_LOGO.png" alt="GCLOGO" id="imgg">
                     <img src="/assets/GCCCS_LOGO.png" alt="GCCCSLOGO">
                 </div>
                 <div class="title">
-                    <h1 *ngIf="!selectedFormat">Select Format:</h1>
+                    <h1>Select Format:</h1>
                 </div>
-                <div class="formats" *ngIf="!selectedFormat">
+                <div class="formats">
                     <div class="format-option-wrapper">
-                        <button class="format-option" (click)="selectFormat('3x3')">
-                            <img src="/assets/3x3.png" alt="3x3 Grid Preview" class="grid-preview1">
-                        </button>
                         <button class="format-option" (click)="selectFormat('2x2')">
-                            <img src="/assets/2x2.png" alt="4x4 Grid Preview" class="grid-preview2">
+                            <img src="/assets/2x2.png" alt="2x2 Grid Preview" class="grid-preview">
+                        </button>
+                        <button class="format-option" (click)="selectFormat('3x3')">
+                            <img src="/assets/3x3.jpg" alt="3x3 Grid Preview" class="grid-preview">
+                        </button>
+                        <button class="format-option" (click)="selectFormat('4x4')">
+                            <img src="/assets/4x4.jpg" alt="4x4 Grid Preview" class="grid-preview">
                         </button>
                     </div>
-                </div>
-            </div>
+                </div>  
+            </div>   
         </section>
 
         <section id="upload-section" *ngIf="selectedFormat">
-            <div class="navDash">
-                <h2>Collage</h2>
-            </div>
-            <div class="logos">
-                <img src="/assets/GC_LOGO.png" alt="GCLOGO" id="imgg">
-                <img src="/assets/GCCCS_LOGO.png" alt="GCCCSLOGO">
-            </div>
             <div class="container">
+                <div class="logos">
+                    <img src="/assets/GC_LOGO.png" alt="GCLOGO" id="imgg">
+                    <img src="/assets/GCCCS_LOGO.png" alt="GCCCSLOGO">
+                </div>
                 <div class="title">
                     <h1>Documentation / Picture:</h1>
-                    <label for="fileInput" id="fileInputLabel">Upload your picture(s) here.</label>
-                    <!-- <button (click)="shareCollage()" *ngIf="isCollageCreated">Share Collage</button> -->
+                    <label for="fileInput" id="fileInputLabel">Click here to Upload picture(s).</label>
                     <input #imageInput type="file" id="fileInput" (change)="onFileSelected(imageInput.files)" multiple style="display: none;">
                 </div>
                 <div class="title2">
                     <h2>Picture Preview:</h2>
-                </div>
+                  </div>
                 <div class="image-upload-container">
                     <div class="uploaded-images">
-                        <img *ngFor="let imageUrl of imageUrls" [src]="imageUrl" height="100" (click)="removeImage(imageUrl)">
+                        <img *ngFor="let imageUrl of imageUrls" [src]="imageUrl" (click)="removeImage(imageUrl)">
                     </div>
                     <div class="dropzone" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
                         Drop images here
@@ -70,7 +69,5 @@
                 <canvas #collageCanvas [class.collage-created]="isCollageCreated"></canvas>
             </div>
         </section>
-        
-  
     </main>
 </body>
