@@ -1065,12 +1065,12 @@ insertImageHeader(imageSrc: string): void {
     if (this.textInput && this.textInput.nativeElement) {
       if (this.userId !== null) {
         const content = this.textInput.nativeElement.innerHTML;
-        const url = this.api.getSaveContentUrl(this.userId);
+        const url = this.api.templategetSaveContentUrl(this.userId);
         const body = { content };
   
-        this.api.saveContent(url, body).subscribe(response => {
+        this.api.templatesaveContent(url, body).subscribe(response => {
           console.log('Content saved:', response);
-          this.router.navigate(['document/view']);
+          this.router.navigate([`templateview`]);
         }, error => {
           console.error('Error saving content:', error);
         });

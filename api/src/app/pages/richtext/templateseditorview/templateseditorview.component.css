@@ -223,29 +223,29 @@ input[type="checkbox"]:checked::after {
  
 
 .content-container {
-  width: 210mm;
+  width: 100%;
+  max-width: 255mm;
   min-height: 297mm;
   margin: auto;
   padding: 2mm;
   box-sizing: border-box;
   position: relative;
-}
+  }
+  
 
-.page {
-  width: 100%;
-  min-height: 297mm;
-  margin-bottom: 5mm;
-  padding-top: 10mm;
-  padding-bottom: 5mm;
-  padding-left: 15mm;
-  padding-right: 15mm;
-  box-sizing: border-box;
-  position: relative;
-  page-break-after: always;
-  background: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  .page {
+    min-width: 100%;
+    min-height: 297mm;
+    margin-bottom: 5mm;
+    padding: 10mm 15mm 5mm 15mm;
+    box-sizing: border-box;
+    position: relative;
+    page-break-after: always;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+  }
 
 .page:last-child {
   page-break-after: auto;

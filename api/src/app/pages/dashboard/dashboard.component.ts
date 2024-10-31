@@ -73,8 +73,6 @@ export class DashboardComponent implements OnInit {
     this.authService.getCurrentUser().subscribe(user => {
       if (user) {
         this.userId = user.id;
-        
-        console.log('User ID:', this.userId);
         this.retrieveFinancialReport();
         this.retrieveProjectReports();
         this.retrieveAnnualReport();
@@ -117,7 +115,6 @@ export class DashboardComponent implements OnInit {
         this.financialReports = resp.data;
         this.updateTotalReports();
         this.updateRecentReports();
-        console.log(this.financialReports);
       },
       (error) => {
         console.log('error');
@@ -132,7 +129,6 @@ export class DashboardComponent implements OnInit {
         this.projectReports = resp.data;
         this.updateTotalReports();
         this.updateRecentReports();
-        console.log(this.projectReports);
       },
       (error) => {
         console.log('error');
@@ -146,7 +142,6 @@ export class DashboardComponent implements OnInit {
         this.annualReport = resp.data;
         this.updateTotalReports();
         this.updateRecentReports();
-        console.log(this.annualReport);
       },
       (error) => {
         console.log('error');
@@ -160,7 +155,6 @@ export class DashboardComponent implements OnInit {
         this.eventReport = resp.data;
         this.updateTotalReports();
         this.updateRecentReports();
-        console.log(this.eventReport);
       },
       (error) => {
         console.log('error');
@@ -175,7 +169,6 @@ export class DashboardComponent implements OnInit {
         this.updateTotalReports();
         this.updateRecentActivity();
         this.updateRecentReports();
-        console.log(this.documentReport);
       },
       (error) => {
         console.log('error');
@@ -185,8 +178,6 @@ export class DashboardComponent implements OnInit {
 
   updateTotalReports(){
     this.totalReports = this.projectReports.length + this.annualReport.length + this.eventReport.length + this.documentReport.length + this.financialReports.length;
-    console.log(this.totalReports)
-    console.log("This is the total reports: ", this.totalReports)
   }
 
 
@@ -194,7 +185,6 @@ export class DashboardComponent implements OnInit {
     this.apiService.getCollaborations(this.userId!).subscribe(
       (resp: any) => {
         this.collaborationData = resp;
-        console.log('Collaboration', this.collaborationData);
         this.updateTotalCollab();
         this.updateRecentReports();
         this.updateRecentActivity();
@@ -207,14 +197,12 @@ export class DashboardComponent implements OnInit {
 
   updateTotalCollab(){
     this.totalCollaboration = this.collaborationData.length;
-    console.log("Collab Number", this.totalCollaboration)
   }
 
   retrieveAllTemplates() {
-    this.apiService.getTemplates(this.userId!).subscribe(
+    this.apiService.getTemplates().subscribe(
       (resp: any) => {
         this.availableTemplates = resp;
-        console.log('Templates: ', this.availableTemplates);
         this.updateNumberofTemplates();
         this.popularTemplatesList();
       }
@@ -223,14 +211,12 @@ export class DashboardComponent implements OnInit {
 
   updateNumberofTemplates(){
     this.totalTemplates = this.availableTemplates.length;
-    console.log("The #Templates is:", this.totalTemplates)
   }
 
   popularTemplatesList(){
     this.popularTemplates = this.availableTemplates
     .sort((a,b) => b.usage_count - a.usage_count)
     .splice(0, 5)
-    console.log("Popular Templates: ", this.popularTemplates);  
 
   }
 
@@ -248,14 +234,13 @@ export class DashboardComponent implements OnInit {
       .map(collab => ({
         description: `You have been invited to edit "${collab.title}" owned by ${collab.created_by || 'Unknown'}`,
         edited_at: collab.created_at,
-        url: `/collaboration/${collab.collab_id}` 
+        url: `/collaboration/${collab.document_id}` 
       }));
   
     this.recentActivity = [...documentActivities, ...collaborationActivities]
       .sort((a, b) => new Date(b.edited_at).getTime() - new Date(a.edited_at).getTime())
       .slice(0, 3);
   
-    console.log("Recent", this.recentActivity);
   }
   
 
@@ -401,7 +386,6 @@ export class DashboardComponent implements OnInit {
     if (confirmed) {
       this.apiService.deleteReport(reportId, 'document').subscribe(
         response => {
-          console.log(`Deleted report with ID: ${reportId}`);
           this.documentReport = this.documentReport.filter(report => report.id !== reportId);
           this.updateRecentReports();
         },

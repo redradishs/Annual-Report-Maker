@@ -8,14 +8,15 @@
   <div class="main-body">
     <div class="taas">
       <h2>Dashboard</h2>
-    <app-admin></app-admin>
+      <app-admin></app-admin>
     </div>
     <div class="promo_card"><!--Promo Card-->
       <h1 class="title">Welcome to ARCO.</h1>
       <span>
         Check out our annual report, which features a cool pic collage!
         It gives an easy-to-understand overview of our company's year, including our big wins,
-        financial highlights, eco-friendly efforts, and plans for the future, all with lots of great photos to keep it interesting..</span>
+        financial highlights, eco-friendly efforts, and plans for the future, all with lots of great photos to keep it
+        interesting..</span>
       <a [routerLink]="['/create']">Start Create!</a>
     </div>
   </div> <!-- Added missing closing div tag -->
@@ -23,107 +24,109 @@
 
 
 
-  <div class="container mt-4">
-    <div class="row mb-4">
-      <div class="col-md-4">
-        <a [routerLink]="['/summary']" class="card shadow-sm text-decoration-none text-dark">
-          <div class="card-body">
-            <div class="text-muted">Total Reports</div>
-            <div class="display-4">{{ totalReports }}</div>
-            <div class="text-success">+2% from last month</div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4">
-        <a [routerLink]="['/report/folder/', this.folderCollab]" class="card shadow-sm text-decoration-none text-dark">
-          <div class="card-body">
-            <div class="text-muted">Collaborators</div>
-            <div class="display-4">{{ totalCollaboration }}</div>
-            <div class="text-success">0% from last month</div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4">
-        <a [routerLink]="['/report/folder/', this.folderTemplates]" class="card shadow-sm text-decoration-none text-dark">
-          <div class="card-body">
-            <div class="text-muted">Available Templates</div>
-            <div class="display-4">{{ totalTemplates }}</div>
-            <div class="text-success">0% from last month</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card shadow-sm mb-4">
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <a [routerLink]="['/summary']" class="card shadow-sm text-decoration-none text-dark">
         <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="h5">Recent Activity</div>
-                <a [routerLink]="['/summary']" class="text-primary">View all</a>
-            </div>
-            <div class="list-group">
-              <div *ngFor="let recent of recentActivity" class="list-group-item d-flex align-items-center" [routerLink]="[recent.url]">
-                <div class="matuwid" >
-                  <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                      <i class="fas fa-user"></i>
-                  </div>
-                  <div class="ml-3">
-                      <div>{{ recent.description }}</div>
-                      <div class="text-muted small">{{ recent.edited_at | date:'short' }}</div>
-                  </div>
-              </div>
-              </div>
-            </div>
+          <div class="text-muted">Total Reports</div>
+          <div class="display-4">{{ totalReports }}</div>
+          <div class="text-success">+2% from last month</div>
         </div>
+      </a>
     </div>
-    <div class="card shadow-sm mb-4">
+    <div class="col-md-4">
+      <a [routerLink]="['/report/folder/', this.folderCollab]" class="card shadow-sm text-decoration-none text-dark">
         <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="h5">Recent Reports</div>
-                <a [routerLink]="['/summary']" class="text-primary">View all</a>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Report</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Last Updated</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let report of recentReports">
-                          <td><a [routerLink]="report.url">{{ report.title }}</a></td>
-                            <td><span class="badge" [ngClass]="report.shared ? 'badge-primary' : 'badge-success'">{{ report.shared ? 'Shared' : 'Solo' }}</span></td>
-                            <td>{{ report.created_at | date:'MMMM d, y' }}</td>
-                            <td>
-                              <a (click)="editReport(report.id, report.type)" class="text-orange"><i class="fas fa-pen"></i></a>
-                              <a (click)="report.deleteMethod(report.id)" class="text-orange ml-3"><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+          <div class="text-muted">Collaborators</div>
+          <div class="display-4">{{ totalCollaboration }}</div>
+          <div class="text-success">0% from last month</div>
         </div>
+      </a>
     </div>
-      <div class="card shadow-sm">
-          <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div class="h5">Popular Templates</div>
-                  <a [routerLink]="['/summary']" class="text-primary">View all</a>
-              </div>
-              <div class="list-group">
-                  <div class="list-group-item d-flex align-items-center" *ngFor="let template of popularTemplates">
-                      <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                          <i class="fas fa-file-alt"></i>
-                      </div>
-                      <div class="ml-3">
-                          <div><a [routerLink]="['template/view', template.id]">{{ template.title }}</a></div>
-                          <div class="text-muted small">Used {{template.usage_count}} timess</div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <div class="col-md-4">
+      <a [routerLink]="['/report/folder/', this.folderTemplates]" class="card shadow-sm text-decoration-none text-dark">
+        <div class="card-body">
+          <div class="text-muted">Available Templates</div>
+          <div class="display-4">{{ totalTemplates }}</div>
+          <div class="text-success">0% from last month</div>
+        </div>
+      </a>
+    </div>
   </div>
-
-
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="h5">Recent Activity</div>
+        <a [routerLink]="['/summary']" class="text-primary">View all</a>
+      </div>
+      <div class="list-group">
+        <div *ngFor="let recent of recentActivity" class="list-group-item d-flex align-items-center"
+          [routerLink]="[recent.url]">
+          <div class="matuwid">
+            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center"
+              style="width: 40px; height: 40px;">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="ml-3">
+              <div>{{ recent.description }}</div>
+              <div class="text-muted small">{{ recent.edited_at | date:'short' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="h5">Recent Reports</div>
+        <a [routerLink]="['/summary']" class="text-primary">View all</a>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Report</th>
+              <th scope="col">Status</th>
+              <th scope="col">Last Updated</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let report of recentReports">
+              <td><a [routerLink]="report.url">{{ report.title }}</a></td>
+              <td><span class="badge" [ngClass]="report.shared ? 'badge-primary' : 'badge-success'">{{ report.shared ?
+                  'Shared' : 'Solo' }}</span></td>
+              <td>{{ report.created_at | date:'MMMM d, y' }}</td>
+              <td>
+                <a (click)="editReport(report.id, report.type)" class="text-orange"><i class="fas fa-pen"></i></a>
+                <a (click)="report.deleteMethod(report.id)" class="text-orange ml-3"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="h5">Popular Templates</div>
+        <a [routerLink]="['/report/folder/', this.folderTemplates]" class="text-primary">View all</a>
+      </div>
+      <div class="list-group">
+        <div class="list-group-item d-flex align-items-center" *ngFor="let template of popularTemplates">
+          <div class="bg-light rounded-circle d-flex align-items-center justify-content-center"
+            style="width: 40px; height: 40px;">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <div class="ml-3">
+            <div><a [routerLink]="['template/view', template.id]">{{ template.title }}</a></div>
+            <div class="text-muted small">Used {{template.usage_count}} times</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

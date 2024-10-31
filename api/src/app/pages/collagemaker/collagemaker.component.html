@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+    <div class="p-4 custom-bg-dark rounded">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <h1 class="mb-3">Arco Collage Maker</h1>
+                <p>Experience the ease of making a collage masterpiece with Pixlr's free online collage maker. Transform
+                    your photos into stunning collages effortlessly by utilizing our professionally designed templates.
+                </p>
+                <p>Start by adding photos that you want in your collage and we will suggest layouts to fill your photo
+                    collage.</p>
+                <div
+                    class="d-flex justify-content-center align-items-center border border-secondary rounded p-4 bg-dark">
+                    <div>
+                        <input type="file" (change)="onFileSelected($event)" multiple hidden #fileInput>
+                        <button class="btn btn-custom btn-lg" (click)="fileInput.click()">Select photo(s)</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="d-flex flex-column">
+                    <div class="mb-2 aspect-ratio-select">
+                        <label for="aspectRatio" class="form-label">Aspect Ratio</label>
+                        <select class="form-select" id="aspectRatio" (change)="setAspectRatio($event)">
+                            <option value="1:1">Square (1:1)</option>
+                            <option value="3:4">Portrait (3:4)</option>
+                            <option value="4:3">Post (4:3)</option>
+                            <option value="9:16">Portrait (9:16)</option>
+                        </select>
+                    </div>
+
+                    <!-- Layout selection dropdown -->
+                    <select (change)="selectLayout($event)">
+                        <option value="2">2 Images</option>
+                        <option value="3">3 Images</option>
+                        <option value="4">4 Images</option>
+                        <option value="5">5 Images</option>
+                        <option value="6">6 Images</option>
+                    </select>
+
+                    <div class="mb-2">
+                        <label for="backgroundColor" class="form-label">Background Color</label>
+                        <input type="color" class="form-control" id="backgroundColor" (input)="setColor($event)">
+                    </div>
+                    <div class="mb-2">
+                        <label for="spacing" class="form-label">Spacing</label>
+                        <input type="number" class="form-control" id="spacing" (input)="setSpace($event)" value="20">
+                    </div>
+                    <div class="mb-2">
+                        <label for="cornerRadius" class="form-label">Corner Radius</label>
+                        <input type="number" class="form-control" id="cornerRadius" (input)="setCorner($event)">
+                    </div>
+                    <div class="text-right mt-4">
+                        <button class="btn btn-light-custom btn-lg mr-2" (click)="clearCollage()">Clear Collage</button>
+                        <button class="btn btn-custom btn-lg" (click)="saveCollage()">Save Collage</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container collageview mb-4">
+            <div class="view" #view></div>
+        </div>
+
+        <!-- Layout Options at the bottom -->
+        <div *ngIf="images.length > 0" class="layout-options">
+            <h2>Choose a Layout</h2>
+            <div class="layout-options-grid">
+                <div class="layout-option" *ngFor="let layout of layouts" (click)="selectLayout(layout)">
+                    <img [src]="layout.image" [alt]="layout.name" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

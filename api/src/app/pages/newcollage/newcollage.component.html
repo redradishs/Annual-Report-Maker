@@ -1,0 +1,164 @@
+<div class="main-layout">
+    <app-navbar></app-navbar>
+    <div class="looban">
+        <div class="options toolbar" id="toolbar">
+            <!-- Toolbar Buttons -->
+
+            <!-- Image Upload Button -->
+            <button id="uploadImage" class="option-button" (click)="fileInput.click()">
+                <i class="fa-solid fa-image"></i>
+            </button>
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;" />
+
+            <!-- Toggle Image List Button -->
+            <button id="toggleImageList" class="option-button" (click)="toggleImageList()">
+                <i class="fa-solid fa-images"></i>
+            </button>
+
+
+            <!-- Text Format Tools -->
+            <button id="bold" class="option-button format">
+                <i class="fa-solid fa-bold"></i>
+            </button>
+            <button id="italic" class="option-button format">
+                <i class="fa-solid fa-italic"></i>
+            </button>
+            <button id="underline" class="option-button format">
+                <i class="fa-solid fa-underline"></i>
+            </button>
+            <button id="strikethrough" class="option-button format">
+                <i class="fa-solid fa-strikethrough"></i>
+            </button>
+            <button id="superscript" class="option-button script">
+                <i class="fa-solid fa-superscript"></i>
+            </button>
+            <button id="subscript" class="option-button script">
+                <i class="fa-solid fa-subscript"></i>
+            </button>
+
+            <!-- Image Resize and Alignment -->
+            <button id="insertTable" class="option-button" (click)="openTableModal()">
+                <i class="fa-solid fa-table"></i>
+            </button>
+            <button id="erase" class="option-button" (click)="eraseText()">
+                <i class="fa-solid fa-eraser"></i>
+            </button>
+            <button id="insertTextHeader" class="option-button" (click)="insertTextHeader()">
+                <i class="fa-solid fa-heading"></i>
+            </button>
+
+            <!-- Zoom In and Out Buttons -->
+            <button id="zoomIn" class="option-button" (click)="zoomIn()">
+                <i class="fa-solid fa-search-plus"></i>
+            </button>
+            <button id="zoomOut" class="option-button" (click)="zoomOut()">
+                <i class="fa-solid fa-search-minus"></i>
+            </button>
+
+            <!-- Flex Property Dropdown -->
+            <select id="flexPropertyDropdown" class="adv-option-button" (change)="applyFlexProperty($event)">
+                <option value="">Select Layout</option>
+                <option value="center">Center Content</option>
+                <option value="space-around">Space Around</option>
+                <option value="space-between">Space Between</option>
+            </select>
+
+            <!-- Font and Color -->
+            <select id="fontName" class="adv-option-button"></select>
+            <select id="fontSize" class="adv-option-button"></select>
+            <div class="input-wrapper">
+                <input type="color" id="foreColor" class="adv-option-button" />
+                <label for="foreColor">Font Color</label>
+            </div>
+
+            <!-- Add this block inside the toolbar section -->
+            <div class="input-wrapper">
+                <input type="color" id="collageColor" class="adv-option-button" (change)="changeCollageColor($event)" />
+                <label for="collageColor">Collage Color</label>
+            </div>
+            <!-- End of new block -->
+
+
+            <div class="image-list-container" id="imageListContainer" style="display: none;">
+                <div class="titlebox">
+                    <h2>Elements</h2>
+                    <button (click)="closeImageList()" class="close-button">Close</button>
+                </div>
+                <div class="image-list-wrapper">
+                    <ul id="imageList" class="image-list horizontal-list">
+                        <li *ngFor="let image of images">
+                            <img [src]="image" (click)="insertImage(image)" class="thumbnail" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="editor-container">
+            <div class="lagayan container" #collageContainer>
+                <div id="text-input" #textInput contenteditable="true" (mouseup)="handleFlexToolbar($event)"></div>
+                <button (click)="saveContent()" class="save">Save</button>
+
+                <div #tableControls class="table-controls hide">
+                    <button id="addRow" class="option-button" (click)="addRow()">
+                        <i class="fa-solid fa-plus"></i> Row
+                    </button>
+                    <button id="addColumn" class="option-button" (click)="addColumn()">
+                        <i class="fa-solid fa-plus"></i> Col
+                    </button>
+                </div>
+            </div>
+
+            <!-- Image Resize Menu -->
+            <div id="image-resize-menu" #resizeMenu style="display: none;">
+                <button data-size="25" (click)="resizeImage(25)">25%</button>
+                <button data-size="50" (click)="resizeImage(50)">50%</button>
+                <button data-size="75" (click)="resizeImage(75)">75%</button>
+                <button data-size="100" (click)="resizeImage(100)">100%</button>
+                <button id="center-image" (click)="alignImage('center')">Center</button>
+                <button id="left-image" (click)="alignImage('left')">Left</button>
+                <button id="right-image" (click)="alignImage('right')">Right</button>
+                <button id="border-radius-10" (click)="setBorderRadius(10)">Border Radius 10</button>
+                <button id="border-radius-20" (click)="setBorderRadius(20)">Border Radius 20</button>
+            </div>
+
+
+            <!-- Text Format Menu -->
+            <div id="text-format-menu" #textFormatMenu style="display: none; position: absolute;">
+                <select (change)="changeFontFamily($event)">
+                    <option value="Arial">Arial</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Garamond">Garamond</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="Arial Black">Arial Black</option>
+                    <option value="Impact">Impact</option>
+                </select>
+
+                <select (change)="changeFontSize($event)">
+                    <option value="8pt">1</option>
+                    <option value="10pt">2</option>
+                    <option value="12pt">3</option>
+                    <option value="14pt">4</option>
+                    <option value="16pt">5</option>
+                    <option value="18pt">6</option>
+                    <option value="24pt">7</option>
+                </select>
+
+                <select (change)="applyHeading($event)">
+                    <option value="H1">H1</option>
+                    <option value="H2">H2</option>
+                    <option value="H3">H3</option>
+                    <option value="H4">H4</option>
+                    <option value="H5">H5</option>
+                    <option value="H6">H6</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

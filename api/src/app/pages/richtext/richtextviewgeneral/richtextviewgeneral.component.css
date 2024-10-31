@@ -1,321 +1,336 @@
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
+
 .container {
-    width: 620px; /* Slightly wider than A4 to accommodate shadow */
-    margin: 20px auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    position: relative;
+  width: 620px; /* Slightly wider than A4 to accommodate shadow */
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  position: relative;
 }
+
 .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
+
 .button {
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #d99e6d;
-    color: white;
-    font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #d99e6d;
+  color: white;
+  font-weight: bold;
 }
+
 .button:hover {
-    background-color: #d99e6d;
+  background-color: #c07a4f;
 }
+
 #statistics {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
+
 .actions {
-    display: flex;
-    gap: 10px;
-    align-items: baseline;
-    justify-content: center;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  justify-content: center;
 }
-/* Modal styles */
+
 /* Modal styles */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Overlay */
 .modal.show {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
 }
+
 li {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+display: flex;
+justify-content: space-around;
+align-items: center;
 }
+
 li i {
-  color: gray;
+color: gray;
 }
 
 /* Modal Container */
 .modal-content {
-  background: white;
-  width: 90%;
-  max-width: 500px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+background: white;
+width: 90%;
+max-width: 500px;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+position: relative;
 }
 
 /* Close Button */
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+position: absolute;
+top: 10px;
+right: 10px;
+background: none;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
 }
 
 /* Modal Header */
 .modal-content h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+font-size: 1.5rem;
+margin-bottom: 20px;
 }
 
 /* Input Fields */
 .modal-content input[type="text"],
 .modal-content input[type="number"] {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+width: calc(100% - 20px);
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
 }
 
 /* Custom Checkbox */
 input[type="checkbox"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  cursor: pointer;
-  position: relative;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #ccc;
+border-radius: 4px;
+background-color: #fff;
+cursor: pointer;
+position: relative;
 }
 
 input[type="checkbox"]:checked {
-  background-color: #d48a5f;
-  border-color: #d48a5f;
+background-color: #d48a5f;
+border-color: #d48a5f;
 }
 
 input[type="checkbox"]:checked::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 6px;
-  width: 6px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+content: '';
+position: absolute;
+top: 2px;
+left: 6px;
+width: 6px;
+height: 12px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
 }
 
 /* Checkbox Label */
 .modal-content label {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+display: flex;
+align-items: center;
+margin-bottom: 10px;
 }
 
 /* Button */
 .buttong {
-  background: #d48a5f;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  width: 100%;
-  text-align: center;
-  margin-top: 20px; /* Add margin to separate from MultiSelect */
+background: #d48a5f;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 1rem;
+width: 100%;
+text-align: center;
+margin-top: 20px; /* Add margin to separate from MultiSelect */
 }
 
 .buttong:hover {
-  background: #c07a4f;
+background: #c07a4f;
 }
 
 .pasulong {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+display: flex;
+justify-content: space-around;
+align-items: center;
 }
 
 .pasulong2 {
-  display: flex;
-  gap: 10px;
+display: flex;
+gap: 10px;
 }
 
 /* Custom Select */
 .custom-select {
-  width: 80%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
+width: 80%;
+padding: 10px;
+margin-top: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+background-color: #f9f9f9;
 }
 
 /* Shared to section */
 .shared-to {
-  width: 50%;
+width: 50%;
 }
+
 .select-to {
-  width: 50%;
+width: 50%;
 }
 
 .shared-to label {
-  display: block;
-  margin-bottom: 10px;
+display: block;
+margin-bottom: 10px;
 }
 
 .shared-to ul {
-  list-style-type: none;
-  padding: 0;
+list-style-type: none;
+padding: 0;
 }
 
 .shared-to li {
-  background: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px 10px;
-  margin-bottom: 5px;
+background: #f9f9f9;
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 5px 10px;
+margin-bottom: 5px;
 }
+
 .dikit {
-  display: flex;
-  justify-content: space-between;
+display: flex;
+justify-content: space-between;
 }
 
-  /* added */
 /* Container for the entire content */
- 
-
 .content-container {
-  width: 210mm;
-  min-height: 297mm;
-  margin: auto;
-  padding: 2mm;
-  box-sizing: border-box;
-  position: relative;
+width: 100%;
+max-width: 255mm;
+min-height: 297mm;
+margin: auto;
+padding: 2mm;
+box-sizing: border-box;
+position: relative;
 }
 
 .page {
-  width: 100%;
+  min-width: 100%;
   min-height: 297mm;
   margin-bottom: 5mm;
-  padding-top: 10mm;
-  padding-bottom: 5mm;
-  padding-left: 15mm;
-  padding-right: 15mm;
+  padding: 10mm 15mm 5mm 15mm;
   box-sizing: border-box;
   position: relative;
   page-break-after: always;
   background: white;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; 
+}
+.page:last-child {
+page-break-after: auto;
 }
 
-.page:last-child {
-  page-break-after: auto;
+.page-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.page-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.page-content table th, .page-content table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Ensure spans and other inline elements are handled properly */
+.page-content span {
+  display: inline-block;
+  max-width: 100%;
 }
 
 
 /* Pagination controls */
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  margin-top: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 5px;
+margin-top: 20px;
 }
 
 .pagination button {
-  padding: 5px 10px;
-  border: none;
-  background-color: #f0f0f0;
-  cursor: pointer;
+padding: 5px 10px;
+border: none;
+background-color: #f0f0f0;
+cursor: pointer;
 }
 
 .pagination button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+cursor: not-allowed;
+opacity: 0.5;
 }
 
 .pagination button.selected {
-  background-color: #007bff;
-  color: white;
+background-color: #007bff;
+color: white;
 }
 
 .titlebox input {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  background: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px 10px;
-  margin-bottom: 5px;
+width: 100%;
+display: flex;
+align-items: center;
+text-align: center;
+background: #f9f9f9;
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 5px 10px;
+margin-bottom: 5px;
 }
 
-/* In styles.css or component-specific CSS file */
+
 @media print {
-  body {
-    margin: 0;
-    padding: 0;
-  }
-
-  #printSection {
-    display: block;
-  }
-
-  .page-break {
-    page-break-before: always;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-
-  /* Add more styles as needed */
+body {
+  margin: 0;
+  padding: 0;
 }
-/* */
+
+#printSection {
+  display: block;
+}
+
+.page-break {
+  page-break-before: always;
+}
+
+img {
+  max-width: 100%;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+}

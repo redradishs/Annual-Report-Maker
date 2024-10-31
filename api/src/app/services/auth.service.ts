@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  // private baseUrl = 'https://gcccsarco.online/arcoapi';
-    private baseUrl = 'http://localhost/judoapi/api';
-
+  // private baseUrl = 'http://arcoreportmaker.unaux.com/arcothisapi/api';
+  private baseUrl = 'http://localhost/judoapi/api';
+  // private baseUrl = 'https://gcccsarco.online/arcoapi/api/';
   private tokenKey = 'jwt';
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
@@ -76,6 +76,14 @@ export class AuthService {
     }
     return null;
   }
+
+  clearLocalStorage(): void {
+    if (isPlatformBrowser(this.platformId) && isLocalStorageAvailable()) {
+      console.log('Clearing local storage');
+      localStorage.clear();
+    }
+  }
+  
 
   getCollage(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/api/getImage`)

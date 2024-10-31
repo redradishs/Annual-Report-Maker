@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { CommonModule, NgFor } from '@angular/common';
 import { ApiService } from '../../services/api.service';
+import { BackComponent } from '../../addons/back/back.component';
 
 interface Folder {
   folder_id?: number;
@@ -17,7 +18,7 @@ interface Folder {
 @Component({
   selector: 'app-report',
   standalone: true,
-  imports: [NavbarComponent, RouterLink, RouterOutlet, RouterModule, GoogleChartsModule, NgFor, CommonModule],
+  imports: [NavbarComponent, RouterLink, RouterOutlet, RouterModule, GoogleChartsModule, NgFor, CommonModule, BackComponent],
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
 })
@@ -76,6 +77,7 @@ export class ReportComponent implements OnInit {
       const newFolder: Folder = { user_id: this.userId, folder_name: folderName };
       this.apiService.createFolder(newFolder, this.userId).subscribe(folder => {
         this.userFolders.push(folder);
+        this.fetchFolders();
       });
     }
   }
@@ -117,6 +119,22 @@ export class ReportComponent implements OnInit {
           this.fetchUnfolderedRichtext();
         }
       });
+    }
+  }
+
+
+  deleteDocumentReport(reportId: number): void {
+    const confirmed = confirm('Are you sure you want to delete this document?');
+    if (confirmed) {
+      this.apiService.deleteReport(reportId, 'document').subscribe(
+        response => {
+          console.log(`Deleted report with ID: ${reportId}`);
+          this.fetchUnfolderedRichtext();
+        },
+        error => {
+          console.error(`Error deleting report with ID: ${reportId}`, error);
+        }
+      );
     }
   }
   

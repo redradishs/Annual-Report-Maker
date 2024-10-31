@@ -1,0 +1,158 @@
+.btn-custom {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #138f99;
+}
+
+.btn-light-custom {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-light-custom:hover {
+    background-color: #5a6268;
+}
+
+.collageview {
+    border: 1px solid #dee2e6;
+    margin-top: 1%;
+    height: 100vh;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Base style for the collage container */
+.view {
+    display: grid;
+    padding: 10px;
+    background-color: gray; /* Example background color */
+    border-radius: 5px; /* Example border radius */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Layout for 2 images */
+.layout-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Layout for 3 images */
+.layout-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Layout for 4 images */
+.layout-4 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Layout for 5 images */
+.layout-5 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Layout for 6 images */
+.layout-6 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.layout-options {
+    margin-top: 20px;
+  }
+  
+  .layout-options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .layout-option {
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  
+  .layout-option:hover {
+    transform: scale(1.05);
+  }
+  
+  .layout-option img {
+    width: 100%;
+    height: auto;
+  }
+  
+
+.view img {
+    width: 100%; /* Fill the grid cell */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the grid cell */
+    border-radius: 5px; /* Example for corner radius */
+}
+
+
+.aspect-ratio-select {
+    display: flex;
+    flex-direction: column;
+}
+
+.aspect-ratio-select label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.aspect-ratio-select select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.layout-options {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.layout-options h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.layout-options-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.layout-option {
+    border: 2px solid #6c757d;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.layout-option img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.layout-option:hover {
+    border-color: #17a2b8;
+}

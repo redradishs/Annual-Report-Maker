@@ -1,4 +1,6 @@
 <app-navbar></app-navbar>
+<app-back></app-back>
+
 
 <div class="container body">
   <h2>Folder Report</h2>
@@ -34,7 +36,6 @@
           <div class="icon"><i class='bx bx-folder-open'></i></div>
           <p>{{ folder.folder_name }}</p>
         </a>
-        <button (click)="deleteFolder(folder.folder_id)" class="buttonn-docu-blank"><i class="fa-regular fa-trash-can"></i></button>
       </li>
     </div>
     <!-- Add new folder -->
@@ -49,19 +50,21 @@
         <li>{{ report.id }}</li>
         <li>{{ report.title }}</li>
         <li>
-          <select (change)="assignToFolder(report.id, $event)">
-            <option value="">Select Folder</option>
-            <option *ngFor="let folder of userFolders" [value]="folder.folder_id">{{ folder.folder_name }}</option>
-          </select>
+          <div class="form-group">
+            <select class="form-control custom-select" (change)="assignToFolder(report.id, $event)">
+              <option value="">Select Folder</option>
+              <option *ngFor="let folder of userFolders" [value]="folder.folder_id">{{ folder.folder_name }}</option>
+            </select>
+          </div>
         </li>
         <li>
-          <button type="button" class="btn_edit">
+          <button type="button" class="btn_edit" [routerLink]="['edit', report.id]">
             <i class='bx bxs-edit-alt'></i>
           </button>
-          <button type="button" class="btn_view">
+          <button type="button" class="btn_view" [routerLink]="['/document', report.id]">
             <i class='bx bxs-low-vision'></i>
           </button>
-          <button type="button" class="btn_delete">
+          <button type="button" class="btn_delete" (click)="deleteDocumentReport(report.id)">
             <i class='bx bxs-trash'></i>
           </button>
         </li>

@@ -14,13 +14,11 @@ interface Folder {
   providedIn: 'root'
 })
 export class ApiService {
+
   // private apiUrl = 'http://arcoreportmaker.unaux.com/arcothisapi/api';
-  private apiUrl = 'http://localhost/judoapi/api';
-
-
-
   // private apiUrl = 'https://gcccsarco.online/arcoapi/api';  
-    // private apiUrl = 'http://localhost/arcoapi/api';
+    private apiUrl = 'http://localhost/judoapi/api';
+
   constructor(private http: HttpClient) { }
 
 
@@ -439,8 +437,8 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/fetchall_collab/${userId}`);
   }
 
-  getTemplates(userId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/fetch_templates/${userId}`);
+  getTemplates(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/fetch_templates`);
   }
 
   getUsernames(userId: number): Observable<any> {
@@ -514,6 +512,38 @@ export class ApiService {
   getReportsByFolderId(folderId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/filterDocumentbyFolderId/${folderId}`);
   }
+
+  removefromFolder(id: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/removeFromFolder/${id}`, {});
+  }
+
+
+  //rte templates
+
+  templategetSaveContentUrl(userId: number): string {
+    return `${this.apiUrl}/new_template/${userId}`;
+  }
+  
+  templatesaveContent(url: string, body: any): Observable<any> {
+    return this.http.post<any>(url, body);
+  }
+
+  templateisa(userId: number): Observable<any> {
+    const url = `${this.apiUrl}/template_isa/${userId}`;
+    return this.http.get<any>(url);
+  }
+
+  deleteassets(img: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/delete_asset/${img}`, {});
+  }
+
+
+  //Share Service
+
+  sharedContent(token: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/fetch_shared/${token}`);
+  }
+
   
   
 

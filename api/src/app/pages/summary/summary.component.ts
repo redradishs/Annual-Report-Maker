@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 import { ChatbotLoaderService } from '../../services/chatbot-loader.service';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { BackComponent } from '../../addons/back/back.component';
 
 interface Report {
   report_id: number;
@@ -48,7 +49,7 @@ interface DocumentReport {
 @Component({
   selector: 'app-summary',
   standalone: true,
-  imports: [RouterLink,RouterModule, RouterOutlet, NavbarComponent, NgFor, NgIf, DatePipe, FormsModule],
+  imports: [RouterLink,RouterModule, RouterOutlet, NavbarComponent, NgFor, NgIf, DatePipe, FormsModule, BackComponent],
   templateUrl: './summary.component.html',
   styleUrl: './summary.component.css',
   providers: [DatePipe, JsonPipe]
@@ -363,79 +364,65 @@ export class SummaryComponent implements AfterViewInit, OnDestroy, OnInit {
     
   
    
-  private updateSelectedRangeText(selectedDates: Date[]): void {
-    const selectedRange = selectedDates
-      .map(date => date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }))
-      .join(' to ');
-
-    const selectedRangeElement = document.getElementById('selected-range');
-    if (selectedRangeElement) {
-      selectedRangeElement.textContent = `${selectedRange}`;
-    }
-
-    if (selectedDates.length === 2) {
-      const [start, end] = selectedDates;
-
-      this.filteredAnnualReport = this.annualReport.filter((report: Report) => {
-        const reportDate = new Date(report.created_at);
-        return reportDate >= start && reportDate <= end;
-      });
-
-      this.filteredFinancialReport = this.financialReport.filter((finance: FinancialReport) => {
-        const financeDate = new Date(finance.start_date);
-        return financeDate >= start && financeDate <= end;
-      });
-
-      this.filteredEventReport = this.eventReport.filter((event: Event) => {
-        const eventDate = new Date(event.event_date);
-        return eventDate >= start && eventDate <= end;
-      });
-
-      this.filteredProjectReport = this.projectStatusReport.filter((project: ProjectStatusReport) => {
-        const startDate = new Date(project.startDate);
-        return startDate >= start && startDate <= end;
-      });
-      
-      
+    setDayRange(): void {
+      console.log('Setting day range');
+      if (this.dateRangePicker) {
+        const today = new Date();
+        this.dateRangePicker.setDate([today, today]);
+        this.updateSelectedRangeText([today]);
+        this.applyDateFilter(); // Added to trigger filter logic
       }
-      
-  }
-  
-  setDayRange(): void {
-    if (this.dateRangePicker) {
-      const today = new Date();
-      this.dateRangePicker.setDate([today, today]);
-      this.updateSelectedRangeText([today]);
     }
-  }
-  
-  setWeekRange(): void {
-    if (this.dateRangePicker) {
-      const today = new Date();
-      const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
-      const endOfWeek = new Date(today.setDate(startOfWeek.getDate() + 6));
-      this.dateRangePicker.setDate([startOfWeek, endOfWeek]);
-      this.updateSelectedRangeText([startOfWeek, endOfWeek]);
+    
+    setWeekRange(): void {
+      console.log('Setting week range');
+      if (this.dateRangePicker) {
+        const today = new Date();
+        const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
+        const endOfWeek = new Date(startOfWeek);
+        endOfWeek.setDate(startOfWeek.getDate() + 6);
+        this.dateRangePicker.setDate([startOfWeek, endOfWeek]);
+        this.updateSelectedRangeText([startOfWeek, endOfWeek]);
+        this.applyDateFilter(); // Added to trigger filter logic
+      }
     }
-  }
-  
-  setMonthRange(): void {
-    if (this.dateRangePicker) {
-      const today = new Date();
-      const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-      const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-      this.dateRangePicker.setDate([startOfMonth, endOfMonth]);
-      this.updateSelectedRangeText([startOfMonth, endOfMonth]);
+    
+    setMonthRange(): void {
+      console.log('Setting month range');
+      if (this.dateRangePicker) {
+        const today = new Date();
+        const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+        this.dateRangePicker.setDate([startOfMonth, endOfMonth]);
+        this.updateSelectedRangeText([startOfMonth, endOfMonth]);
+        this.applyDateFilter(); // Added to trigger filter logic
+      }
     }
-  }
-  
-  setYearRange(): void {
-    if (this.dateRangePicker) {
-      const today = new Date();
-      const startOfYear = new Date(today.getFullYear(), 0, 1);
-      const endOfYear = new Date(today.getFullYear(), 11, 31);
-      this.dateRangePicker.setDate([startOfYear, endOfYear]);
-      this.updateSelectedRangeText([startOfYear, endOfYear]);
+    
+    setYearRange(): void {
+      console.log('Setting year range');
+      if (this.dateRangePicker) {
+        const today = new Date();
+        const startOfYear = new Date(today.getFullYear(), 0, 1);
+        const endOfYear = new Date(today.getFullYear(), 11, 31);
+        this.dateRangePicker.setDate([startOfYear, endOfYear]);
+        this.updateSelectedRangeText([startOfYear, endOfYear]);
+        this.applyDateFilter(); // Added to trigger filter logic
+      }
     }
-  }
-}
+    
+    private updateSelectedRangeText(selectedDates: Date[]): void {
+      const selectedRange = selectedDates
+        .map(date => date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }))
+        .join(' to ');
+    
+      const selectedRangeElement = document.getElementById('selected-range');
+      if (selectedRangeElement) {
+        selectedRangeElement.textContent = `${selectedRange}`;
+      }
+    
+      if (selectedDates.length === 2) {
+        this.applyDateFilter(); // Ensure date filtering is applied after date range is updated
+      }
+    }
+  }    

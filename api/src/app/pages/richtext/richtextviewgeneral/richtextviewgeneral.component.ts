@@ -12,6 +12,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
 import { PDFDocument, rgb } from 'pdf-lib';
 import { Subject } from 'rxjs';
 import { ApiService } from '../../../services/api.service';
+import { BackComponent } from '../../../addons/back/back.component';
 
 interface SelectedUser {
   user_id: number;
@@ -21,13 +22,15 @@ interface SelectedUser {
 @Component({
   selector: 'app-richtextviewgeneral',
   standalone: true,
-  imports: [NavbarComponent, FormsModule, CommonModule, PaginationComponent],
+  imports: [NavbarComponent, FormsModule, CommonModule, PaginationComponent, BackComponent],
   templateUrl: './richtextviewgeneral.component.html',
   styleUrl: './richtextviewgeneral.component.css'
 })
 export class RichtextviewgeneralComponent implements OnInit {
   @ViewChild('titleInput') titleInput!: ElementRef;
   @ViewChild('printSection') printSection!: ElementRef;
+
+  userSearchTerm: string = '';
 
   profileData: any = {};
   username: string | null = null;
@@ -226,7 +229,7 @@ export class RichtextviewgeneralComponent implements OnInit {
   deleteUserCollab(collabId: number): void {
     const confirmed = confirm('Are you sure you want to delete this user?');
     if (confirmed) {
-      this.http.post(`https://gcccsarco.online/arcoapi/api/delete_usercollab/${collabId}`, {})
+      this.api.deleteUserCollab(collabId)
        .subscribe(
           () => {
             console.log('User collaboration deleted successfully');
@@ -332,6 +335,15 @@ updateWordCount() {
   } else {
     console.error('Content container element not found');
   }
+}
+
+
+filteredUsers() {
+  if (!this.userSearchTerm) {
+    return this.users;
+  }
+  const searchTermLower = this.userSearchTerm.toLowerCase();
+  return this.users.filter(user => user.username.toLowerCase().includes(searchTermLower));
 }
 
   

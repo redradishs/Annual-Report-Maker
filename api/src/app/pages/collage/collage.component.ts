@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { BackComponent } from '../../addons/back/back.component';
 
 
 
@@ -14,7 +15,7 @@ import { ApiService } from '../../services/api.service';
 @Component({
   selector: 'app-collage',
   standalone: true,
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent, BackComponent],
   templateUrl: './collage.component.html',
   styleUrls: ['./collage.component.css']
 })
@@ -125,9 +126,6 @@ export class CollageComponent {
           ctx.drawImage(img, x, y, cellSize, cellSize);
         });
 
-        // Convert the canvas to a data URL and submit it to the server
-        const collageDataUrl = canvas.toDataURL();
-        this.submitAndNavigate(collageDataUrl);
         this.isCollageCreated = true; // Set to true when collage is created
 
       });
@@ -146,52 +144,10 @@ export class CollageComponent {
       link.href = collageDataUrl;
       link.download = 'collage.png';
       link.click();
-  
-      // Optional: Log the URL to the console or handle it as needed
-      console.log('Collage URL:', collageDataUrl);
     } else {
       console.error('Collage has not been created yet.');
     }
   }
-
-  // shareCollage() {
-  //   if (this.isCollageCreated) {
-  //     const canvas: HTMLCanvasElement = this.collageCanvas.nativeElement;
-  //     const collageDataUrl = canvas.toDataURL('image/png');
-  
-  //     if (navigator.share) {
-  //       // Web Share API does not support Data URLs, so this will be a fallback method
-  //       navigator.share({
-  //         title: 'My Collage',
-  //         text: 'Check out this collage I made!',
-  //         // URL can be shared if it's uploaded to a server
-  //         url: 'https://your-server-path/' + encodeURIComponent(collageDataUrl)
-  //       }).then(() => {
-  //         console.log('Collage shared successfully');
-  //       }).catch((error) => {
-  //         console.error('Error sharing collage:', error);
-  //       });
-  //     } else {
-  //       console.log('Web Share API is not supported in this browser.');
-  //       // Provide a fallback: Copy to clipboard
-  //       this.copyToClipboard(collageDataUrl);
-  //       alert('Collage URL copied to clipboard');
-  //     }
-  //   } else {
-  //     console.error('Collage has not been created yet.');
-  //   }
-  // }
-  
-  // copyToClipboard(text: string) {
-  //   const textArea = document.createElement('textarea');
-  //   textArea.value = text;
-  //   document.body.appendChild(textArea);
-  //   textArea.select();
-  //   document.execCommand('copy');
-  //   document.body.removeChild(textArea);
-  //   console.log('Collage URL copied to clipboard:', text);
-  // }
-  
 
   
   submitAndNavigate(collageDataUrl: string) {

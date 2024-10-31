@@ -1,0 +1,327 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.looban {
+    display: flex;
+    flex-direction: column; /* Change this to column to stack elements vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.editor-container {
+    display: flex;
+    flex-direction: column; /* Change this to column to stack elements vertically */
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%; /* Full width to align center properly */
+}
+
+.toolbar {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 80%; /* Set the toolbar width to 80% */
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: sticky; /* Make the toolbar sticky */
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    overflow-x: auto;
+    margin: 0 auto; /* Center the toolbar */
+    border: 1px solid #ccc; /* Add border */
+    box-shadow: none; /* Remove the shadow */
+}
+
+.lagayan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%; /* Make the editor container full width */
+}
+/* Add this to your CSS */
+.close-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: 10px;
+    color: #000;
+  }
+  
+  .close-button:hover {
+    color: #f00;
+  }
+  
+  .horizontal-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+  }
+  
+  .thumbnail {
+    width: 100px; /* Adjust the width as needed */
+    height: auto;
+    cursor: pointer;
+    margin-right: 10px; /* Space between images */
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+
+  .titlebox {
+    display: flex;
+  }
+  
+  
+  .image-list-container {
+    display: none;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 5px;
+  }
+  
+  .image-list-wrapper {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .image-list-wrapper img {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+
+  
+
+.container {
+    background-color: #ffffff;
+    width: 80%; /* Set the container width to 80% */
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    box-shadow: 0 25px 50px rgba(7, 20, 35, 0.2);
+    margin-top: 10px; /* Add some margin to separate from the toolbar */
+    border: 1px solid #ccc; /* Add border to the container */
+    margin: 0 auto; /* Center the container */
+}
+
+#text-input {
+    padding-right: 10mm;
+    padding-left: 10mm;
+    padding-bottom: 10mm;
+    padding-top: 7mm;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1.5px solid black;
+    position: relative;
+    min-height: 550px;
+    overflow: auto;
+}
+
+button {
+    height: 28px;
+    width: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 3px;
+    border: none;
+    background-color: #ffffff;
+    outline: none;
+    color: #020929;
+}
+
+select {
+    padding: 7px;
+    border: 1px solid #020929;
+    border-radius: 3px;
+}
+
+.options label,
+.options select {
+    font-family: "Poppins", sans-serif;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 40px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 15px;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #020929;
+}
+
+input[type="color"]::-moz-color-swatch {
+    border-radius: 15px;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 3px #020929;
+}
+
+#image-resize-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    padding: 5px;
+}
+
+#image-resize-menu button {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+#image-resize-menu button:hover {
+    background-color: #f0f0f0;
+}
+
+img.resizable {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+#flex-toolbar {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#flex-toolbar button {
+    margin: 2px 0;
+    padding: 5px 10px;
+    border: none;
+    background: #f0f0f0;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+    width: 150px;
+    user-select: none;
+}
+
+#flex-toolbar button:hover {
+    background: #e0e0e0;
+}
+
+.table-controls {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    border-radius: 5px;
+    flex-direction: row;
+    gap: 10px;
+    transform: translateX(-50%);
+    margin-top: 10px;
+}
+
+.table-controls.hide {
+    display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.table-control-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.table-control-button i {
+    margin-right: 5px;
+}
+
+.table-control-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 90vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    app-navbar {
+        width: 100%;
+        height: 60px;
+    }
+
+    .container {
+        width: 95vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 100vw;
+        padding: 1rem;
+    }
+
+    #text-input {
+        min-height: 400px;
+    }
+}
+
+@media (min-width: 1201px) {
+    .container {
+        max-width: 90vw;
+    }
+
+    #text-input {
+        min-height: 1000px;
+    }
+}

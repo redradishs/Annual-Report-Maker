@@ -13,6 +13,7 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import { Router } from '@angular/router';
 import { Observable, Subject, catchError, debounceTime, of, tap, throwError } from 'rxjs';
 import { ApiService } from '../../../services/api.service';
+import { BackComponent } from '../../../addons/back/back.component';
 
 interface SelectedUser {
   user_id: number;
@@ -22,7 +23,7 @@ interface SelectedUser {
 @Component({
   selector: 'app-richtextview',
   standalone: true,
-  imports: [NavbarComponent, FormsModule, CommonModule, PaginationComponent],
+  imports: [NavbarComponent, FormsModule, CommonModule, PaginationComponent, BackComponent],
   templateUrl: './richtextview.component.html',
   styleUrl: './richtextview.component.css'
 })
@@ -33,6 +34,7 @@ export class RichtextviewComponent implements OnInit {
 
   profileData: any = {};
   username: string | null = null;
+  userSearchTerm: string = '';
 
 
   wordCount: number = 0;
@@ -74,7 +76,6 @@ export class RichtextviewComponent implements OnInit {
     this.authService.getCurrentUser().subscribe(user => {
       if (user) {
         this.userId = user.id;
-        console.log('User ID:', this.userId);
         this.fetchContent().subscribe(() => {
           this.fetchSharedUsers();
         });
@@ -90,7 +91,6 @@ export class RichtextviewComponent implements OnInit {
     if (this.userId !== null) {
       this.api.getProfileData(this.userId).subscribe(
         (resp: any) => {
-          console.log('Profile data:', resp);
           if (resp.data && resp.data.length > 0) {
             this.profileData = resp.data[0];
             this.username = this.profileData.username;
@@ -144,17 +144,13 @@ export class RichtextviewComponent implements OnInit {
     if (this.userId !== null) {
       return this.api.fetchDocument(this.userId).pipe(
         tap((resp: any) => {
-          console.log(resp);
           this.content = resp.data.content;
           this.postId = resp.data.id;
           this.documentTitle = resp.data.title;
-          console.log('Post ID:', this.postId);
           this.paginateContent();
           this.calculateTotalPages();
-          console.log('Total Pages:', this.totalPages);
           setTimeout(() => {
             this.updateWordCount();
-            console.log('Word Count:', this.wordCount);
           }, 0);
         }),
         catchError((error) => {
@@ -172,15 +168,10 @@ export class RichtextviewComponent implements OnInit {
 
 
   onUserSelect(selectedUserIds: number[]) {
-    console.log('Selected User IDs:', selectedUserIds); 
-  
-   
     this.selectedUsers = [];
-    console.log('Cleared selected users:', this.selectedUsers); 
-  
-    
+
     selectedUserIds.forEach(userId => {
-      console.log('Adding user ID:', userId); 
+
       this.addUser(userId);
     });
   }
@@ -188,7 +179,6 @@ export class RichtextviewComponent implements OnInit {
   addUser(userId: number) {
     if (!this.selectedUsers.includes(userId)) {
       this.selectedUsers.push(userId);
-      console.log('Updated selected users:', this.selectedUsers); 
       this.addSelectedUsers([userId]); 
     }
   }
@@ -196,13 +186,11 @@ export class RichtextviewComponent implements OnInit {
     if (this.postId !== null) {
       this.api.fetchSharedUsers(this.postId).subscribe(
         (resp: { user_id: number, username: string, collab_id: number }[]) => {
-          console.log('Shared TO:', resp);
           this.sharedUsers = resp.map(user => ({
             id: user.user_id,
             username: user.username,
             collabId: user.collab_id
           }));
-          console.log('Mapped Shared TO:', this.sharedUsers);
         },
         (error) => {
           console.error('Error fetching shared users:', error);
@@ -221,7 +209,6 @@ export class RichtextviewComponent implements OnInit {
     if (confirmed) {
       this.api.deleteUserCollab(collabId).subscribe(
         () => {
-          console.log('User collaboration deleted successfully');
           this.fetchSharedUsers();
         },
         error => {
@@ -229,6 +216,14 @@ export class RichtextviewComponent implements OnInit {
         }
       );
     }
+  }
+
+  filteredUsers() {
+    if (!this.userSearchTerm) {
+      return this.users;
+    }
+    const searchTermLower = this.userSearchTerm.toLowerCase();
+    return this.users.filter(user => user.username.toLowerCase().includes(searchTermLower));
   }
 
 
@@ -249,7 +244,6 @@ export class RichtextviewComponent implements OnInit {
 
       this.api.addSelectedUsers(this.postId, data).subscribe(
         response => {
-          console.log('Add Selected Users API Response:', response);
           if (response.error) {
             console.error('Error adding selected users:', response.error);
             alert(response.error);
@@ -300,14 +294,11 @@ export class RichtextviewComponent implements OnInit {
   
   fetchUsers() {
     if (this.userId !== null) {
-      console.log(`Fetching users for user ID: ${this.userId}`);
       this.api.fetchUsers(this.userId).subscribe(
         (resp: { user_id: number, username: string }[] | null | undefined) => {
           if (resp) {
-            console.log('Fetched users:', resp);
             this.users = resp.map(user => ({ id: user.user_id, username: user.username }));
             this.users.sort((a, b) => a.username.localeCompare(b.username));
-            console.log('Mapped users:', this.users);
           } else {
             console.error('API response is null or undefined');
           }

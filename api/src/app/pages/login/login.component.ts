@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router'; // Import ActivatedRoute
 import { AuthService } from '../../services/auth.service';
 import { LoadingPageComponent } from '../../addons/loading-page/loading-page.component';
 
@@ -13,13 +13,22 @@ import { LoadingPageComponent } from '../../addons/loading-page/loading-page.com
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
-  errorMessage: string = ''; // To store error message
+  errorMessage: string = ''; 
   loading: boolean = false; 
-  
-  constructor(private authService: AuthService, private router: Router) {}
+  returnUrl: string = '/'; 
+
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private route: ActivatedRoute 
+  ) {}
+
+  ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+  }
   
   onLogin() {
     if (!this.email || !this.password) {
@@ -38,7 +47,7 @@ export class LoginComponent {
       (response: any) => {
         console.log('Login Successful.', response);
         this.authService.setToken(response.jwt);
-        this.router.navigate(['/dashboard']);
+        this.router.navigateByUrl(this.returnUrl);
         this.loading = false;
       },
       (error: any) => {

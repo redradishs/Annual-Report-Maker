@@ -68,7 +68,7 @@ export class CreateformComponent implements OnInit {
 
 
   retrieveAllTemplates() {
-    this.apiService.getTemplates(this.userId!).subscribe(
+    this.apiService.getTemplates().subscribe(
       (resp: any) => {
         this.availableTemplates = resp
           .sort((a: any, b: any) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())

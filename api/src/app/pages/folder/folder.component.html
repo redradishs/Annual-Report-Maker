@@ -1,73 +1,93 @@
 <app-navbar></app-navbar>
 
 <div class="container body">
-  <h2>{{ folderType }}</h2>
+  <div class="titlebox">
+    <app-back></app-back>
+    <h2>{{ folderType }}</h2>
+  </div>
   <div class="search-box">
     <i class='bx bx-search-alt-2'></i>
     <input type="text" placeholder="Search here...">
   </div>
 </div>
 
-<div class="wrapper container">
-  <div class="row">
-    <div class="col-md-12">
-      <h3>{{ folderType }} Document Table</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Document Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let document of documents; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ document.title }}</td>
-            <td>
-              <button type="button" class="btn_edit">
-                <i class='bx bxs-edit-alt'></i>
-              </button>
-              <button type="button" class="btn_view">
-                <i class='bx bx-search-alt-2'></i>
-              </button>
-              <button type="button" class="btn_delete">
-                <i class='bx bxs-trash'></i>
-              </button>
-            </td>
-          </tr>
-          <tr *ngFor="let template of availableTemplates; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ template.title }}</td>
-            <td>
-              <button type="button" class="btn_edit">
-                <i class='bx bxs-edit-alt'></i>
-              </button>
-              <button type="button" class="btn_view">
-                <i class='bx bx-search-alt-2'></i>
-              </button>
-              <button type="button" class="btn_delete">
-                <i class='bx bxs-trash'></i>
-              </button>
-            </td>
-          </tr>
-          <tr *ngFor="let collab of collaborationData; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ collab.title }}</td>
-            <td>
-              <button type="button" class="btn_edit">
-                <i class='bx bxs-edit-alt'></i>
-              </button>
-              <button type="button" class="btn_view">
-                <i class='bx bx-search-alt-2'></i>
-              </button>
-              <button type="button" class="btn_delete">
-                <i class='bx bxs-trash'></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<div class="wrapper container mt-5">
+  <div class="titlebox">
+    <h3>{{ folderType }} Document Table</h3>
+    <div class="buttonss">
+
+      <button *ngIf="folderType === 'Templates'" (click)="createTemplate()" class="buttonn-docu-blank"
+        title="Create Template">
+        <i class="fa-regular fa-plus"></i>
+      </button>
+
+      <button (click)="deleteFolder(folderId)" class="buttonn-docu-blank" title="Delete Folder">
+        <i class="fa-regular fa-trash-can"></i>
+      </button>
+      <button (click)="downloadAllDocuments(folderType)" class="buttonn-docu-blank" title="Download All Documents">
+        <i class="fa-regular fa-circle-down"></i>
+      </button>
+
+
+
+
     </div>
+
   </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Owner</th>
+        <th>Created at</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let document of documents; let i = index">
+        <td><i class="fa-regular fa-file-lines"></i> {{ document.title }}</td>
+        <td class="owner-column"><i class="fa-solid fa-user"></i> {{ document.username }} </td>
+        <td>{{ document.created_at | date:'mediumDate' }}</td>
+        <td> <button class="btn" [routerLink]="['/document', document.id]" title="View Document">
+            <i class="fa-solid fa-eye"></i>
+          </button></td>
+        <td><button class="btn" (click)="removeFile(document.id)"><i class="fa-regular fa-trash-can"></i></button></td>
+
+        <!-- <a [routerLink]="['/document/', document.id]">
+          <i class="fa-solid fa-eye"></i>
+        </a> -->
+      </tr>
+      <tr *ngFor="let template of availableTemplates; let i = index">
+        <td><i class="fa-regular fa-file-lines"></i> {{ template.title }}</td>
+        <td class="owner-column"><i class="fa-solid fa-user"></i> {{ template.username }}</td>
+        <td>{{ template.created_at | date:'mediumDate' }}</td>
+        <td> <button class="btn" [routerLink]="['/create/template/view/', template.id]" title="View Document">
+            <i class="fa-solid fa-eye"></i>
+          </button></td>
+
+      </tr>
+      <tr *ngFor="let collab of collaborationData; let i = index">
+        <td><i class="fa-regular fa-file-lines"></i> {{ collab.title }}</td>
+        <td class="owner-column"><i class="fa-solid fa-user"></i> {{ collab.username }}</td>
+        <td>{{ collab.created_at | date:'mediumDate' }}</td>
+        <td> <button class="btn" [routerLink]="['/document', collab.document_id]" title="View Document">
+            <i class="fa-solid fa-eye"></i>
+          </button></td>
+
+      </tr>
+
+      <ng-container *ngIf="folderType === 'Elements'">
+        <tr *ngFor="let imageUrl of images; let i = index">
+          <td>
+            <img [src]="imageUrl" alt="Image Preview" class="image-preview" />
+          </td>
+          <td>
+            <button class="btn" (click)="deleteElement(elements[i]?.id)" title="Delete Element">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
 </div>

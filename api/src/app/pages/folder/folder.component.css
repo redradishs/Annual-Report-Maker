@@ -1,7 +1,7 @@
 /* folder.component.css */
 @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
-.body {
+/* .body {
   min-height: 2vh;
   display: flex;
   justify-content: space-between;
@@ -9,23 +9,38 @@
   margin-bottom: 1%;
   margin-bottom: 50px;
   margin-left: 60px;
+} */
+
+.body {
+  display: flex;
+  align-items: initial;
+  justify-content: space-between;
+  margin-bottom: 5%;
 }
 
+.titlebox button {
+  margin-top: 5px;
+}
+
+i {
+  margin-right: 8%;
+}
 .body h2 {
   font-family: 'Poppins','sans-serif';
   color: #d99e6d;
   font-weight: 600;
   font-size: 45px;
   padding: 20px;
-  line-height: 25px;
 }
 
-.search-box {
+.search-box{
   position: relative;
   height: 45px;
   max-width: 500px;
   width: 100%; 
-  margin-top: 100px; 
+ /* margin-left: 1100px;*/
+  margin-top: 15px; 
+ 
 }
 
 .search-box input {
@@ -96,54 +111,55 @@ h3 {
   font-size: 25px;
   font-weight: 500;
 }
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
 .table th, .table td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  vertical-align: middle;
 }
 
-.table th {
-  background-color: #f2f2f2;
-  color: #d99e6d;
-  text-align: left;
-  box-shadow: 5px 5px 2px #d99e6d;
+.owner-column {
+  display: flex;
+  align-items: center;
 }
 
-.table td button {
-  outline: none;
-  border: none;
-  color: #fff;
-  padding: 0.4rem;
-  border-radius: 10px;
+.owner-column img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.buttonss {
+  display: flex;
+  margin: 10px;
+}
+
+
+.buttonn-docu-blank {
+  color: gray;
+  border: transparent;
   cursor: pointer;
-  background-color: #d99e6d;
-  margin: 1px;
-  transition: 0.5s;
-}
-
-.table td button:hover {
-  transition: 0.1s;
-  color: black;
-  position: relative;
-  margin-top: -4px;
-  opacity: 100%;
-}
-
-.table td button i {
-  font-size: medium;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: transparent;
+  font-size: 20px;
+  outline: none;
 }
 
-.table td button:active {
-  transform: scale(1.1);
+.titlebox {
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
 }
 
+.image-preview {
+  width: 50%;  /* Fixed width */
+  height: 100px;  /* Fixed height */
+  object-fit: cover;  /* Maintain aspect ratio */
+  border-radius: 5px;
+  margin-right: 10px;
+  display: block; /* Ensure it's treated as a block element */
+}
+
+ 
 @media screen and (max-width: 640px) {
   .body h2 {
     line-height: 45px;

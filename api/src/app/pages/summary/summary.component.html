@@ -7,6 +7,8 @@
 
 
 <app-navbar></app-navbar>
+<app-back></app-back>
+
 
 <h2 class="titlebox">User Summary</h2>
 <div class="container">
@@ -15,17 +17,18 @@
     <div class="upper">
         <h4 id="selected-range">Select Date Range</h4>
         <div class="range">
-          <button (click)="setDayRange()">Day</button>
-          <button (click)="setWeekRange()">Week</button>
-          <button (click)="setMonthRange()">Month</button>
-          <button (click)="setYearRange()">Year</button>
-          <button id="date-range-icon" class="date-picker-button" aria-label="Select a date range">
-            <i class="fas fa-calendar-alt"></i>
-          </button>
-          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm" (input)="applySearchFilter()">
+            <button (click)="setDayRange()">Day</button>
+            <button (click)="setWeekRange()">Week</button>
+            <button (click)="setMonthRange()">Month</button>
+            <button (click)="setYearRange()">Year</button>
+            <button id="date-range-icon" class="date-picker-button" aria-label="Select a date range">
+                <i class="fas fa-calendar-alt"></i>
+            </button>
+            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm"
+                (input)="applySearchFilter()">
         </div>
-      </div>
-      
+    </div>
+
     <div class="middle">
         <div class="row activities">
 
@@ -37,7 +40,8 @@
                         <div class="date">{{ report.report_id }}</div>
                         <div class="activity">{{ report.title }}</div>
                         <div class="sumbut">
-                            <button class="stylish-gray-button" [routerLink]="['viewannualreport/view', report.report_id]">
+                            <button class="stylish-gray-button"
+                                [routerLink]="['viewannualreport/view', report.report_id]">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                             <button class="stylish-gray-button" [routerLink]="['annualreport', report.report_id]">
@@ -48,74 +52,87 @@
                     </div>
                 </div>
             </div>
-            
 
-<div *ngFor="let event of filteredEventReport" class="col-md-2">
-    <div class="card-t">
-        <div class="card">
-            <div class="day"> {{ event.event_date | date: 'MMMM d, y' }}</div>
-            <div class="date"> {{ event.event_id }}</div>
-            <div class="activity"> {{ event.event_name }}</div>
-            <div class="sumbut">
-                <button class="stylish-gray-button" [routerLink]="['vieweventreport/view', event.event_id]"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button class="stylish-gray-button" [routerLink]="['eventreport', event.event_id]"><i class="fa-solid fa-pen-to-square"></i></button>
+
+            <div *ngFor="let event of filteredEventReport" class="col-md-2">
+                <div class="card-t">
+                    <div class="card">
+                        <div class="day"> {{ event.event_date | date: 'MMMM d, y' }}</div>
+                        <div class="date"> {{ event.event_id }}</div>
+                        <div class="activity"> {{ event.event_name }}</div>
+                        <div class="sumbut">
+                            <button class="stylish-gray-button"
+                                [routerLink]="['vieweventreport/view', event.event_id]"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="stylish-gray-button" [routerLink]="['eventreport', event.event_id]"><i
+                                    class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+                        <!-- <button class="stylish-gray-button" (click)="deleteReport(event.event_id)">Delete</button> -->
+
+                    </div>
+                </div>
             </div>
-            <!-- <button class="stylish-gray-button" (click)="deleteReport(event.event_id)">Delete</button> -->
 
-        </div>
-    </div>
-</div>
-
-<div *ngFor="let finance of filteredFinancialReport" class="col-md-2">
-    <div class="card-t">
-        <div class="card">
-            <div class="day"> {{ finance.start_date | date: 'MMMM d, y' }}</div>
-            <div class="date"> {{ finance.financialreport_id }}</div>
-            <div class="activity"> {{ finance.report_title }}</div>
-            <div class="sumbut">
-                <button class="stylish-gray-button" [routerLink]="['viewfinancialreport/view', finance.financialreport_id]"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button class="stylish-gray-button" [routerLink]="['financialreport', finance.financialreport_id]"><i class="fa-solid fa-pen-to-square"></i></button>
+            <div *ngFor="let finance of filteredFinancialReport" class="col-md-2">
+                <div class="card-t">
+                    <div class="card">
+                        <div class="day"> {{ finance.start_date | date: 'MMMM d, y' }}</div>
+                        <div class="date"> {{ finance.financialreport_id }}</div>
+                        <div class="activity"> {{ finance.report_title }}</div>
+                        <div class="sumbut">
+                            <button class="stylish-gray-button"
+                                [routerLink]="['viewfinancialreport/view', finance.financialreport_id]"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="stylish-gray-button"
+                                [routerLink]="['financialreport', finance.financialreport_id]"><i
+                                    class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+                        <!-- <button class="stylish-gray-button" (click)="deleteFinancialReport(finance.financialreport_id)">Delete</button>             -->
+                    </div>
+                </div>
             </div>
-            <!-- <button class="stylish-gray-button" (click)="deleteFinancialReport(finance.financialreport_id)">Delete</button>             -->
-        </div>
-    </div>
-</div>
 
 
-<div *ngFor="let project of filteredProjectReport" class="col-md-2">
-    <div class="card-t">
-        <div class="card">
-            <div class="day">{{ project.startDate | date: 'MMMM d, y' }}</div>
-            <div class="date">{{ project.projectID }}</div>
-            <div class="activity">{{ project.projectName }}</div>
-           <div class="sumbut">
-            <button class="stylish-gray-button" [routerLink]="['viewprojectreport/view', project.projectID]"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <button class="stylish-gray-button" [routerLink]="['projectreportstatus', project.projectID]"><i class="fa-solid fa-pen-to-square"></i></button>
-           </div>
-            <!-- <button class="stylish-gray-button" (click)="deleteprojectStatusReport(project.projectID)">Delete</button> -->
-        </div>
-    </div>
-</div>
+            <div *ngFor="let project of filteredProjectReport" class="col-md-2">
+                <div class="card-t">
+                    <div class="card">
+                        <div class="day">{{ project.startDate | date: 'MMMM d, y' }}</div>
+                        <div class="date">{{ project.projectID }}</div>
+                        <div class="activity">{{ project.projectName }}</div>
+                        <div class="sumbut">
+                            <button class="stylish-gray-button"
+                                [routerLink]="['viewprojectreport/view', project.projectID]"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="stylish-gray-button"
+                                [routerLink]="['projectreportstatus', project.projectID]"><i
+                                    class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+                        <!-- <button class="stylish-gray-button" (click)="deleteprojectStatusReport(project.projectID)">Delete</button> -->
+                    </div>
+                </div>
+            </div>
 
-<div *ngFor="let document of filteredDocumentReport" class="col-md-2">
-    <div class="card-t">
-        <div class="card">
-            <div class="day">{{ document.created_at | date: 'MMMM d, y' }}</div>
-            <div class="date">{{ document.id }}</div>
-            <div class="activity">{{ document.title }}</div>
-           <div class="sumbut">
-            <button class="stylish-gray-button" [routerLink]="['document', document.id]"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <button class="stylish-gray-button" [routerLink]="['edit', document.id]"><i class="fa-solid fa-pen-to-square"></i></button>
-           </div>
-            <!-- <button class="stylish-gray-button" (click)="deleteprojectStatusReport(project.projectID)">Delete</button> -->
-        </div>
-    </div>
-</div>
+            <div *ngFor="let document of filteredDocumentReport" class="col-md-2">
+                <div class="card-t">
+                    <div class="card">
+                        <div class="day">{{ document.created_at | date: 'MMMM d, y' }}</div>
+                        <div class="date">{{ document.id }}</div>
+                        <div class="activity">{{ document.title }}</div>
+                        <div class="sumbut">
+                            <button class="stylish-gray-button" [routerLink]="['document', document.id]"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                            <button class="stylish-gray-button" [routerLink]="['edit', document.id]"><i
+                                    class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+                        <!-- <button class="stylish-gray-button" (click)="deleteprojectStatusReport(project.projectID)">Delete</button> -->
+                    </div>
+                </div>
+            </div>
 
 
 
-   
-            
+
+
 
 
 
@@ -139,9 +156,12 @@
                 <p>{{ annual.report_id }}</p>
             </div>
             <div class="displaybutton col-md-3 text-right">
-                <button class="stylish-gray-button" [routerLink]="['viewannualreport/view', annual.report_id]"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button class="stylish-gray-button" [routerLink]="['annualreport', annual.report_id]"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="stylish-gray-button" (click)="deleteReport(annual.report_id)"><i class="fa-solid fa-trash"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['viewannualreport/view', annual.report_id]"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['annualreport', annual.report_id]"><i
+                        class="fa-solid fa-pen-to-square"></i></button>
+                <button class="stylish-gray-button" (click)="deleteReport(annual.report_id)"><i
+                        class="fa-solid fa-trash"></i></button>
             </div>
         </div>
 
@@ -154,9 +174,12 @@
                 <p>{{ event.summary }}</p>
             </div>
             <div class="displaybutton col-md-3 text-right">
-                <button class="stylish-gray-button" [routerLink]="['vieweventreport/view', event.event_id]"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button class="stylish-gray-button" [routerLink]="['eventreport', event.event_id]"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="stylish-gray-button" (click)="deleteEvent(event.event_id)"><i class="fa-solid fa-trash"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['vieweventreport/view', event.event_id]"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['eventreport', event.event_id]"><i
+                        class="fa-solid fa-pen-to-square"></i></button>
+                <button class="stylish-gray-button" (click)="deleteEvent(event.event_id)"><i
+                        class="fa-solid fa-trash"></i></button>
             </div>
         </div>
 
@@ -169,9 +192,13 @@
                 <p>{{ entry.executive_summary }}</p>
             </div>
             <div class="displaybutton col-md-3 text-right">
-                <button class="stylish-gray-button" [routerLink]="['viewfinancialreport/view', entry.financialreport_id]"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button class="stylish-gray-button" [routerLink]="['financialreport', entry.financialreport_id]"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="stylish-gray-button" (click)="deleteFinancialReport(entry.financialreport_id)"><i class="fa-solid fa-trash"></i></button>
+                <button class="stylish-gray-button"
+                    [routerLink]="['viewfinancialreport/view', entry.financialreport_id]"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['financialreport', entry.financialreport_id]"><i
+                        class="fa-solid fa-pen-to-square"></i></button>
+                <button class="stylish-gray-button" (click)="deleteFinancialReport(entry.financialreport_id)"><i
+                        class="fa-solid fa-trash"></i></button>
             </div>
         </div>
 
@@ -190,9 +217,12 @@
                 <p>{{ entry.projectManager }}</p>
             </div>
             <div class="displaybutton col-md-3 text-right">
-                <button class="stylish-gray-button" [routerLink]="['viewprojectreport/view', entry.projectID]"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button class="stylish-gray-button" [routerLink]="['projectreportstatus', entry.projectID]"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="stylish-gray-button" (click)="deleteProjectStatusReport(entry.projectID)"><i class="fa-solid fa-trash"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['viewprojectreport/view', entry.projectID]"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['projectreportstatus', entry.projectID]"><i
+                        class="fa-solid fa-pen-to-square"></i></button>
+                <button class="stylish-gray-button" (click)="deleteProjectStatusReport(entry.projectID)"><i
+                        class="fa-solid fa-trash"></i></button>
             </div>
         </div>
 
@@ -208,18 +238,21 @@
                 </div>
             </div>
             <div class="displaybutton col-md-3 text-right">
-                <button class="stylish-gray-button" [routerLink]="['document', document.id]"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button class="stylish-gray-button" [routerLink]="['edit', document.id]"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="stylish-gray-button" (click)="deleteDocumentReport(document.id)"><i class="fa-solid fa-trash"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['document', document.id]"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="stylish-gray-button" [routerLink]="['edit', document.id]"><i
+                        class="fa-solid fa-pen-to-square"></i></button>
+                <button class="stylish-gray-button" (click)="deleteDocumentReport(document.id)"><i
+                        class="fa-solid fa-trash"></i></button>
             </div>
         </div>
     </div>
 
 
-<script>
-    window.embeddedChatbotConfig = {
-      chatbotId: "bFHr9FOJQh-I-3DEPPZyZ",
-      domain: "www.chatbase.co"
-    };
-  </script>
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "bFHr9FOJQh-I-3DEPPZyZ",
+            domain: "www.chatbase.co"
+        };
+    </script>
 </div>

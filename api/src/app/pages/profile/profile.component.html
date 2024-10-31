@@ -1,9 +1,11 @@
 <body style="font-family: 'Poppins', sans-serif;">
     <app-navbar></app-navbar>
+    <app-back></app-back>
+
 
     <div class="navDash">
         <h2>Profile</h2>
-      </div>  
+    </div>
 
     <div class="container">
         <div class="container card">
@@ -12,9 +14,9 @@
                 </div>
                 <div class="col-md-9">
                     <div class="tab-content">
-                        <div class="tab-pane fade active show" id="account-general">   
-                                                                      
-                            <div class="card-body media align-items-center">         
+                        <div class="tab-pane fade active show" id="account-general">
+
+                            <div class="card-body media align-items-center">
                                 <div class="profile-picture-container">
                                     <img src="../../../assets/user.png" alt="Profile Picture" class="profile-picture">
                                 </div>
@@ -23,26 +25,27 @@
                                         Upload new photo
                                         <input type="file" id="fileInput" class="account-settings-fileinput">
                                     </label> &nbsp;
-                                 
+
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    
+
 
                                     <label class="form-label">Username</label>
                                     <input type="text" class="form-control" [(ngModel)]="profileData.username">
 
                                     <label class="form-label">Email</label>
                                     <input type="email" class="form-control" [(ngModel)]="profileData.email">
-                                       
+
                                     <label class="form-label">Current Password</label>
                                     <input type="password" class="form" [(ngModel)]="currentPassword">
-                                    <div *ngIf="currentPasswordError" class="text-danger">{{ currentPasswordError }}</div>
-                                       
+                                    <div *ngIf="currentPasswordError" class="text-danger">{{ currentPasswordError }}
+                                    </div>
+
                                     <label class="form-label">New Password</label>
                                     <input type="password" class="form" [(ngModel)]="newPassword">
-                                       
+
                                     <label class="form-label">Confirm New Password</label>
                                     <input type="password" class="form" [(ngModel)]="confirmNewPassword">
                                     <div *ngIf="newPasswordError" class="text-danger">{{ newPasswordError }}</div>
@@ -52,16 +55,18 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="button-container">
                     <button type="button" class="buttons" (click)="updateUsernameAndEmail()">Update Username</button>
                     <button type="button" class="buttons" (click)="updatePassword()">Update Password</button>
+                    <button type="button" class="buttons"
+                        [routerLink]="['/report', 'folder', 'Elements']">Elements</button>
                     <button type="button" class="buttons-cancel">Cancel</button>
-                  </div> 
+                </div>
             </div>
-            
+
         </div>
-     
+
     </div>
 
 

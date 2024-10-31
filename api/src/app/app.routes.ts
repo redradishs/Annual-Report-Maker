@@ -38,6 +38,10 @@ import { TemplateseditorComponent } from './pages/richtext/templateseditor/templ
 import { TemplateseditorblankComponent } from './pages/richtext/templateseditorblank/templateseditorblank.component';
 import { TemplateseditorviewComponent } from './pages/richtext/templateseditorview/templateseditorview.component';
 import { NotfoundpageComponent } from './addons/notfoundpage/notfoundpage.component';
+import { NewcollageComponent } from './pages/newcollage/newcollage.component';
+import { CollagemakerComponent } from './pages/collagemaker/collagemaker.component';
+import { TemplateslatestComponent } from './pages/richtext/templateslatest/templateslatest.component';
+import { ShareComponent } from './pages/share/share.component';
 
 export const routes: Routes = [
 
@@ -240,11 +244,20 @@ export const routes: Routes = [
     component: TemplateseditorblankComponent, canActivate: [authGuard] },
     { path: 'dashboard/template/view/:id', 
     component: TemplateseditorviewComponent, canActivate: [authGuard] },
+    { path: 'templateview', 
+    component: TemplateslatestComponent, canActivate: [authGuard] },
     { path: 'create/template/view/:id', 
     component: TemplateseditorviewComponent, canActivate: [authGuard] },
     { path: 'template/edit/:id', 
     component: TemplateseditorComponent, canActivate: [authGuard] },
-    { path: '**', component: NotfoundpageComponent }
+    { path: 'report/edit/:id', 
+    component: RichtexteditComponent, canActivate: [authGuard] },
+    { path: 'newcollage', 
+    component: CollagemakerComponent, canActivate: [authGuard] },
+    {
+        path: 'share/:link_token', component: ShareComponent
+    }
+    // { path: '**', component: NotfoundpageComponent }
     
 
 ];

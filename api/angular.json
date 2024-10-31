@@ -44,7 +44,9 @@
               "rgbcolor",
               "interactjs",
               "pako",
-              "mammoth"
+              "mammoth",
+              "file-saver",
+              "jszip"
             ]
           },
           "configurations": {

@@ -1,0 +1,28 @@
+.back-button {
+    position: fixed;
+    top: 10px; /* Adjust the top value as needed */
+    right: 10px; /* Adjust the right value as needed */
+    display: flex;
+    width: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: #fff;
+    z-index: 1000; /* Ensure the button is on top of other elements */
+  }
+  
+  .back-button i {
+    font-size: 3rem;
+    color: #d99e6d;
+  }
+  
+  .back-button:hover {
+    transform: translateY(-2px);
+  }
+  

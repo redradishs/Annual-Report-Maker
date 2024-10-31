@@ -7,11 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
+import { BackComponent } from '../../addons/back/back.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [NavbarComponent, RouterLink, RouterOutlet, RouterModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [NavbarComponent, RouterLink, RouterOutlet, RouterModule, FormsModule, ReactiveFormsModule, CommonModule, BackComponent],
 
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'

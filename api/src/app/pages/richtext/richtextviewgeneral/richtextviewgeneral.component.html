@@ -1,10 +1,13 @@
 <app-navbar></app-navbar>
+<app-back></app-back>
+
 <div class="actions">
   <div class="titlebox">
-    <input type="text" #titleInput [(ngModel)]="documentTitle" placeholder="Untitled Document" (keydown)="onKeyDown($event)" />
+    <input type="text" #titleInput [(ngModel)]="documentTitle" placeholder="Untitled Document"
+      (keydown)="onKeyDown($event)" />
   </div>
   <div class="buttons">
-    <button class="button" (click)="printPage()">Print</button>
+    <!-- <button class="button" (click)="printPage()">Print</button> -->
     <button class="button" (click)="printPaged()">Download PDF</button>
     <button class="button" (click)="openModal()">Share</button>
     <button class="button" (click)="editContent()">Edit</button>
@@ -14,7 +17,7 @@
   </div>
 </div>
 
-<div id="printSection" #printSection   style="display: none;">
+<div id="printSection" #printSection style="display: none;">
   <div *ngFor="let page of [].constructor(totalPages); let i = index">
     <div [innerHTML]="getPageContent(i)"></div>
   </div>
@@ -25,11 +28,7 @@
     <div class="page-content" id="content" [innerHTML]="getPageContent(i)"></div>
   </div>
 
-  <app-pagination
-    [totalPages]="totalPages"
-    [currentPage]="currentPage"
-    (pageChange)="onPageChange($event)">
-  </app-pagination>
+
 </div>
 
 <!-- The Modal -->
@@ -58,11 +57,14 @@
     <div class="dikit">
       <div *ngIf="canEdit" class="select-to">
         <label for="selectUsers">Select Users:</label>
-        <select id="selectUsers" multiple [(ngModel)]="selectedUsers" (ngModelChange)="onUserSelect($event)" class="custom-select">
-          <option *ngFor="let user of users" [value]="user.id">{{ user.username }}</option>
+        <input type="text" [(ngModel)]="userSearchTerm" placeholder="Search Users..." class="user-search-input" />
+        <select id="selectUsers" multiple [(ngModel)]="selectedUsers" (ngModelChange)="onUserSelect($event)"
+          class="custom-select">
+          <option *ngFor="let user of filteredUsers()" [value]="user.id">{{ user.username }}</option>
         </select>
       </div>
-      
+
+
       <div *ngIf="sharedUsers.length > 0" class="shared-to">
         <label>Shared to:</label>
         <ul>
