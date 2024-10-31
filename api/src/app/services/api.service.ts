@@ -14,8 +14,12 @@ interface Folder {
   providedIn: 'root'
 })
 export class ApiService {
+  // private apiUrl = 'http://arcoreportmaker.unaux.com/arcothisapi/api';
+  private apiUrl = 'http://localhost/judoapi/api';
 
-  private apiUrl = 'https://gcccsarco.online/arcoapi/api';  
+
+
+  // private apiUrl = 'https://gcccsarco.online/arcoapi/api';  
     // private apiUrl = 'http://localhost/arcoapi/api';
   constructor(private http: HttpClient) { }
 

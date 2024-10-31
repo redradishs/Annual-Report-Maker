@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'https://gcccsarco.online/arcoapi';
+  // private baseUrl = 'https://gcccsarco.online/arcoapi';
+    private baseUrl = 'http://localhost/judoapi/api';
+
   private tokenKey = 'jwt';
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
@@ -25,14 +27,14 @@ export class AuthService {
   }
 
   userLogin(data: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/login.php`, data)
+    return this.http.post<any>(`${this.baseUrl}/login`, data)
      .pipe(
         catchError(this.handleError)
       );
   }
 
   userSignUp(data: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/signup.php`, data)
+    return this.http.post<any>(`${this.baseUrl}/signup`, data)
      .pipe(
         catchError(this.handleError)
       );
